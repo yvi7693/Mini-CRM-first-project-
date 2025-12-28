@@ -1,7 +1,6 @@
-import random
 import json
 from src.constant import *
-import datetime
+from datetime import date
 
 def add_client_people(first_name: str, last_name: str, age: int, number_phone: str, email: str):
     parameters_client = {
@@ -11,9 +10,9 @@ def add_client_people(first_name: str, last_name: str, age: int, number_phone: s
         "age": age,
         "number_phone": number_phone,
         "email": email,
-        "date_add": datetime.date.today()
+        "date_add": str(date.today())
     }
-a
+
     with open(PATH_CLIENT, "w", encoding="UTF-8") as file:
         json.dump(parameters_client, file, indent = 4)
 
@@ -25,7 +24,7 @@ def add_client_company(name: str, founded: int, number_phone: str, email: str, s
         "number_phone": number_phone,
         "email": email,
         "site": site,
-        "date_add": datetime.date.today()
+        "date_add": str(date.today())
     }
 
     with open(PATH_CLIENT, "w", encoding="UTF-8") as file:

@@ -6,4 +6,6 @@ def start():
 def main_loop():
     pass
 
+def stop():
+    pass
 

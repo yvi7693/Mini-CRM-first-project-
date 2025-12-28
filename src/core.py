@@ -7,13 +7,34 @@ def start():
     main_loop()
 
 def main_loop():
-    command = input("Введите команду >>")
+    command = int(input("Введите команду >>"))
     flag = True
 
     while flag:
 
         if command == "1":
-            add_client()
+
+            object = str(input("Введите объект ввода: people/company >>"))
+
+            if object == "people":
+                first_name = str(input("Введите имя клиента >> "))
+                last_name = str(input("Введите фамилию клиента >> "))
+                age = int(input("Введите возвраст клиента >>"))
+                number_phone = int(input("Введите номер телефона клиента >> "))
+                email = str(input("Введите почту клиента >>"))
+
+                add_client_people(first_name, last_name, age, number_phone, email)
+
+
+            elif object == "company":
+                name = str(input("Введите название компании >> "))
+                founded = int(input("Введите год основания компании >> "))
+                number_phone = int(input("Введите номер телефона клиента >> "))
+                email = str(input("Введите почту клиента >> "))
+                site = str(input("Введите сайт клиента >> "))
+
+
+
             flag = False
 
         elif command == "2":

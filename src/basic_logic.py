@@ -1,5 +1,22 @@
-def add_client():
-    pass
+import random
+import json
+from src.constant import *
+import datetime
+
+def add_client_people(first_name: str, last_name: str, age: int, company:str, number_phone: str, email: str):
+    parameters_client = {
+        "identifier_number": random.randint(1000, 9999),
+        "first_name": first_name,
+        "last_name": last_name,
+        "age": age,
+        "number_phone": number_phone,
+        "email": email,
+        "date_add": datetime.date.today()
+    }
+
+    with open(PATH_CLIENT, "w", encoding="UTF-8") as file:
+        json.dump(parameters_client, file, indent = 4)
+
 
 def watch_all_clients():
     pass

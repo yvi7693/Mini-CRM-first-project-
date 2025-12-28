@@ -20,8 +20,19 @@ def main_loop():
             if object == "people":
                 first_name = str(input("Введите имя клиента >> "))
                 last_name = str(input("Введите фамилию клиента >> "))
+
                 age = int(input("Введите возвраст клиента >>"))
-                number_phone = int(input("Введите номер телефона клиента >> "))
+
+                while age < 0:
+                    print("Некорректный возраст!!!")
+                    age = int(input("Введите возвраст клиента >>"))
+
+                number_phone = str(input("Введите номер телефона клиента начиная c '+7' >> "))
+
+                while len(number_phone) != 12 or number_phone[0:2] != "+7":
+                    print("Не корректный номер телефона !!!")
+                    number_phone = str(input("Введите номер телефона клиента начиная c '+7' >> "))
+
                 email = str(input("Введите почту клиента >>"))
 
                 add_client_people(first_name, last_name, age, number_phone, email)

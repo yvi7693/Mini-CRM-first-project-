@@ -1,0 +1,1 @@
+PATH_CLIENT = "client.json"

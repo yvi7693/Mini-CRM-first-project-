@@ -8,8 +8,8 @@ def start():
 
 def main_loop():
     command = int(input("Введите команду >>"))
-    flag = True
 
+    flag = True
     while flag:
 
         if command == "1":
@@ -33,7 +33,7 @@ def main_loop():
                 email = str(input("Введите почту клиента >> "))
                 site = str(input("Введите сайт клиента >> "))
 
-
+                add_client_company(name, founded, number_phone, email, site)
 
             flag = False
 

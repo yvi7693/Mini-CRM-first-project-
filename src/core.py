@@ -1,7 +1,10 @@
-from basic_logic import *
+from src.basic_logic import *
+from src.display import *
+
 
 def start():
-    pass
+    show_start_information()
+    main_loop()
 
 def main_loop():
     command = input("Введите команду >>")

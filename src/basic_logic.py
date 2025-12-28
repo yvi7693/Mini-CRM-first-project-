@@ -2,6 +2,9 @@ import json
 from src.constant import *
 from datetime import date
 
+from src import core
+
+
 def add_client_people(first_name: str, last_name: str, age: int, number_phone: str, email: str):
     parameters_client = {
         "identifier_number": id(first_name),
@@ -15,6 +18,9 @@ def add_client_people(first_name: str, last_name: str, age: int, number_phone: s
 
     with open(PATH_CLIENT, "w", encoding="UTF-8") as file:
         json.dump(parameters_client, file, indent = 4)
+
+    print("Клиент успешно добавлен :)")
+    core.start()
 
 def add_client_company(name: str, founded: int, number_phone: str, email: str, site: str):
     parameters_client = {
@@ -30,6 +36,8 @@ def add_client_company(name: str, founded: int, number_phone: str, email: str, s
     with open(PATH_CLIENT, "w", encoding="UTF-8") as file:
         json.dump(parameters_client, file, indent = 4)
 
+    print("Клиент успешно добавлен :)")
+    core.start()
 
 def watch_all_clients():
     pass

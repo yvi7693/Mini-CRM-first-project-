@@ -7,3 +7,6 @@ def watch_all_clients():
 def edit_client():
     pass
 
+def delete_client():
+    pass
+

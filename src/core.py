@@ -3,11 +3,12 @@ from src.display import *
 
 
 def start():
-    show_start_information()
+    show_greeting()
     main_loop()
 
 def main_loop():
-    command = int(input("Введите команду >>"))
+    show_start_information()
+    command = str(input("Введите команду >>"))
 
     flag = True
     while flag:

@@ -16,7 +16,7 @@ def add_client_people(first_name: str, last_name: str, age: int, number_phone: s
         "date_add": str(date.today())
     }
 
-    with open(PATH_CLIENT, "w", encoding="UTF-8") as file:
+    with open(PATH_CLIENT, "a", encoding="UTF-8") as file:
         json.dump(parameters_client, file, indent = 4)
 
     print("Клиент успешно добавлен :)")
@@ -33,7 +33,7 @@ def add_client_company(name: str, founded: int, number_phone: str, email: str, s
         "date_add": str(date.today())
     }
 
-    with open(PATH_CLIENT, "w", encoding="UTF-8") as file:
+    with open(PATH_CLIENT, "a", encoding="UTF-8") as file:
         json.dump(parameters_client, file, indent = 4)
 
     print("Клиент успешно добавлен :)")

@@ -20,7 +20,7 @@ def add_client_people(first_name: str, last_name: str, age: int, number_phone: s
         json.dump(parameters_client, file, indent = 4)
 
     print("Клиент успешно добавлен :)")
-    core.start()
+    core.main_loop()
 
 def add_client_company(name: str, founded: int, number_phone: str, email: str, site: str):
     parameters_client = {
@@ -35,9 +35,10 @@ def add_client_company(name: str, founded: int, number_phone: str, email: str, s
 
     with open(PATH_CLIENT, "a", encoding="UTF-8") as file:
         json.dump(parameters_client, file, indent = 4)
+        file.write(",")
 
     print("Клиент успешно добавлен :)")
-    core.start()
+    core.main_loop()
 
 def watch_all_clients():
     pass

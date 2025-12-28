@@ -16,5 +16,8 @@ def search_client():
 def filtering_clients():
     pass
 
+def sort_client():
+    pass
+
 def find_statistic():
     pass

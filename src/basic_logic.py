@@ -13,3 +13,5 @@ def delete_client():
 def search_client():
     pass
 
+def filtering_clients():
+    pass

@@ -10,3 +10,6 @@ def edit_client():
 def delete_client():
     pass
 
+def search_client():
+    pass
+

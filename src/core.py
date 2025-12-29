@@ -9,21 +9,33 @@ def start():
 
 def main_loop():
     show_start_information()
-    command = input(show_input_message("Введите команду >>"))
+    show_input_message("Введите команду >> ")
+    command = input()
 
     is_working = True
     while is_working:
 
         if command == ADD_COMMAND:
 
-            client_type = input(show_input_message("Введите объект ввода: people/company >>"))
+            show_input_message("Введите объект ввода: people/company >>")
+            client_type = input()
 
             if client_type == "people":
-                first_name = input(show_input_message("Введите имя клиента >> "))
-                last_name = input(show_input_message("Введите фамилию клиента >> "))
-                age = input(show_input_message("Введите возвраст клиента >>"))
-                number_phone = input(show_input_message("Введите номер телефона клиента начиная c '+7' >> "))
-                email = input(show_input_message("Введите почту клиента >>"))
+
+                show_input_message("Введите имя клиента >> ")
+                first_name = input()
+
+                show_input_message("Введите фамилию клиента >> ")
+                last_name = input()
+
+                show_input_message("Введите возвраст клиента >>")
+                age = input()
+
+                show_input_message("Введите номер телефона клиента начиная c '+7' >> ")
+                number_phone = input()
+
+                show_input_message("Введите почту клиента >>")
+                email = input()
 
                 if validate_client_people(first_name, last_name, age, number_phone, email):
 
@@ -31,6 +43,8 @@ def main_loop():
                     show_statement_message("Клиент успешно добавлен :)")
 
                 else:
+
+                    show_error_message("Не корректный ввод, попробуйте еще раз!!!")
                     continue
 
 

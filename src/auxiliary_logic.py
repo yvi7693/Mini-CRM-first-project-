@@ -26,4 +26,13 @@ def validate_number_phone(number_phone: str) -> bool:
 
     return True
 
+def validate_email(email: str) -> bool:
+    if len(email) < 6:
+        return False
+
+    if not "@" in email or not "." in email:
+        return False
+
+    return True
+
 

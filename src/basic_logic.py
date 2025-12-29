@@ -1,8 +1,9 @@
 import json
-from src.constant import *
 from datetime import date
 
 from src import core
+from src.auxiliary_logic import *
+from src.constant import *
 
 
 def add_client_people(first_name: str, last_name: str, age: int, number_phone: str, email: str):
@@ -60,3 +61,18 @@ def sort_client():
 
 def find_statistic():
     pass
+
+def validate_client_people(first_name: str, last_name: str, age: str, number_phone: str, email: str) -> bool:
+    if validate_name(first_name) == False or validate_name(last_name) == False:
+        return False
+
+    if not validate_age(age):
+        return False
+
+    if not validate_number_phone(number_phone):
+        return False
+
+    if not validate_email(email):
+        return False
+
+    return True

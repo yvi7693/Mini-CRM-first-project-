@@ -21,22 +21,18 @@ def main_loop():
             if client_type == "people":
                 first_name = input(show_input_message("Введите имя клиента >> "))
                 last_name = input(show_input_message("Введите фамилию клиента >> "))
-
                 age = input(show_input_message("Введите возвраст клиента >>"))
-
-                while age < 0:
-                    print("Некорректный возраст!!!")
-                    age = input(show_input_message("Введите возвраст клиента >>"))
-
                 number_phone = input(show_input_message("Введите номер телефона клиента начиная c '+7' >> "))
-
-                while len(number_phone) != 12 or number_phone[0:2] != "+7":
-                    print("Не корректный номер телефона !!!")
-                    number_phone = input(show_input_message("Введите номер телефона клиента начиная c '+7' >> "))
-
                 email = input(show_input_message("Введите почту клиента >>"))
 
-                add_client_people(first_name, last_name, age, number_phone, email)
+                if validate_client(first_name, last_name, age, number_phone, email) == True:
+
+                    add_client_people(first_name, last_name, age, number_phone, email)
+
+                else:
+
+                    validate_client()
+                    continue
 
 
             elif client_type == "company":

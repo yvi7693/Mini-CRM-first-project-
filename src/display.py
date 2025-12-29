@@ -5,10 +5,10 @@ def show_greeting():
     print("Hello!")
 
 def show_input_message(message: str):
-    print(message)
+    print(message, end = "")
 
 def show_statement_message(message: str):
-    print(message)
+    print(message, end = "")
 
 def show_error_message(message: str):
-    print(message)
+    print(message, end = "")

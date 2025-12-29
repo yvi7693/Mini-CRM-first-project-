@@ -8,42 +8,42 @@ def start():
 
 def main_loop():
     show_start_information()
-    command = str(input("Введите команду >>"))
+    command = input(show_input_message("Введите команду >>"))
 
     flag = True
     while flag:
 
         if command == "1":
 
-            object = str(input("Введите объект ввода: people/company >>"))
+            object = input(show_input_message("Введите объект ввода: people/company >>"))
 
             if object == "people":
-                first_name = str(input("Введите имя клиента >> "))
-                last_name = str(input("Введите фамилию клиента >> "))
+                first_name = input(show_input_message("Введите имя клиента >> "))
+                last_name = input(show_input_message("Введите фамилию клиента >> "))
 
-                age = int(input("Введите возвраст клиента >>"))
+                age = input(show_input_message("Введите возвраст клиента >>"))
 
                 while age < 0:
                     print("Некорректный возраст!!!")
-                    age = int(input("Введите возвраст клиента >>"))
+                    age = input(show_input_message("Введите возвраст клиента >>"))
 
-                number_phone = str(input("Введите номер телефона клиента начиная c '+7' >> "))
+                number_phone = input(show_input_message("Введите номер телефона клиента начиная c '+7' >> "))
 
                 while len(number_phone) != 12 or number_phone[0:2] != "+7":
                     print("Не корректный номер телефона !!!")
-                    number_phone = str(input("Введите номер телефона клиента начиная c '+7' >> "))
+                    number_phone = input(show_input_message("Введите номер телефона клиента начиная c '+7' >> "))
 
-                email = str(input("Введите почту клиента >>"))
+                email = input(show_input_message("Введите почту клиента >>"))
 
                 add_client_people(first_name, last_name, age, number_phone, email)
 
 
             elif object == "company":
-                name = str(input("Введите название компании >> "))
-                founded = int(input("Введите год основания компании >> "))
-                number_phone = int(input("Введите номер телефона клиента >> "))
-                email = str(input("Введите почту клиента >> "))
-                site = str(input("Введите сайт клиента >> "))
+                name = input("Введите название компании >> ")
+                founded = input("Введите год основания компании >> ")
+                number_phone = input("Введите номер телефона клиента >> ")
+                email = input("Введите почту клиента >> ")
+                site = input("Введите сайт клиента >> ")
 
                 add_client_company(name, founded, number_phone, email, site)
 

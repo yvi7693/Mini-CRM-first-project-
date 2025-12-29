@@ -1,5 +1,3 @@
-import json
-import os
 from datetime import date
 
 from src.auxiliary_logic import *
@@ -19,17 +17,7 @@ def add_client_people(first_name: str, last_name: str, age: int, number_phone: s
         "date_add": str(date.today())
     }
 
-    if not os.path.isfile(PATH_CLIENT):
-        dataset = [parameters_client]
-
-    else:
-        with open(PATH_CLIENT, "r", encoding="UTF-8") as file:
-            dataset = json.load(file)
-
-        dataset.append(parameters_client)
-
-    with open(PATH_CLIENT, "w", encoding="UTF-8") as file:
-        json.dump(dataset, file, indent = 4)
+    write_json_file(PATH_CLIENT, parameters_client)
 
 
 def add_client_company(name: str, founded: int, number_phone: str, email: str, site: str):

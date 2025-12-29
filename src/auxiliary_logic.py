@@ -1,3 +1,7 @@
+import json
+import os
+
+
 def validate_name(name: str) -> bool:
     if len(name) == 0:
         return False
@@ -35,4 +39,17 @@ def validate_email(email: str) -> bool:
 
     return True
 
+def write_json_file(path: str, dictionary: dict):
+
+    if not os.path.isfile(path):
+        dataset = [dictionary]
+
+    else:
+        with open(path, "r", encoding="UTF-8") as file:
+            dataset = json.load(file)
+
+        dataset.append(dictionary)
+
+    with open(path, "w", encoding="UTF-8") as file:
+        json.dump(dataset, file, indent = 4)
 

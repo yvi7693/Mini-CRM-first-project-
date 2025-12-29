@@ -6,3 +6,6 @@ def show_greeting():
 
 def show_input_message(message: str):
     print(message)
+
+def show_statement_message(message: str):
+    print(message)

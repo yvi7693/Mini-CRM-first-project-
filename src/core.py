@@ -1,5 +1,6 @@
 from src.basic_logic import *
 from src.display import *
+from src.constant import *
 
 
 def start():
@@ -13,7 +14,7 @@ def main_loop():
     is_working = True
     while is_working:
 
-        if command == "1":
+        if command == ADD_COMMAND:
 
             client_type = input(show_input_message("Введите объект ввода: people/company >>"))
 
@@ -49,31 +50,31 @@ def main_loop():
 
             is_working = False
 
-        elif command == "2":
+        elif command == LIST_COMMAND:
             watch_all_clients()
             is_working = False
 
-        elif command == "3":
+        elif command == EDIT_COMMAND:
             edit_client()
             is_working = False
 
-        elif command == "4":
+        elif command == DELETE_COMMAND:
             delete_client()
             is_working = False
 
-        elif command == "5":
+        elif command == SEARCH_COMMAND:
             search_client()
             is_working = False
 
-        elif command == "6":
+        elif command == FILTER_COMMAND:
             filtering_clients()
             is_working = False
 
-        elif command == "7":
+        elif command == SORT_COMMAND:
             sort_client()
             is_working = False
 
-        elif command == "8":
+        elif command == STAT_COMMAND:
             find_statistic()
             is_working = False
 

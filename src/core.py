@@ -25,13 +25,12 @@ def main_loop():
                 number_phone = input(show_input_message("Введите номер телефона клиента начиная c '+7' >> "))
                 email = input(show_input_message("Введите почту клиента >>"))
 
-                if validate_client(first_name, last_name, age, number_phone, email) == True:
+                if validate_client_people(first_name, last_name, age, number_phone, email):
 
                     add_client_people(first_name, last_name, age, number_phone, email)
+                    show_statement_message("Клиент успешно добавлен :)")
 
                 else:
-
-                    validate_client()
                     continue
 
 

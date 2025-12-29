@@ -9,3 +9,6 @@ def show_input_message(message: str):
 
 def show_statement_message(message: str):
     print(message)
+
+def show_error_message(message: str):
+    print(message)

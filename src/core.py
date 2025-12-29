@@ -10,14 +10,14 @@ def main_loop():
     show_start_information()
     command = input(show_input_message("Введите команду >>"))
 
-    flag = True
-    while flag:
+    is_working = True
+    while is_working:
 
         if command == "1":
 
-            object = input(show_input_message("Введите объект ввода: people/company >>"))
+            client_type = input(show_input_message("Введите объект ввода: people/company >>"))
 
-            if object == "people":
+            if client_type == "people":
                 first_name = input(show_input_message("Введите имя клиента >> "))
                 last_name = input(show_input_message("Введите фамилию клиента >> "))
 
@@ -38,7 +38,7 @@ def main_loop():
                 add_client_people(first_name, last_name, age, number_phone, email)
 
 
-            elif object == "company":
+            elif client_type == "company":
                 name = input("Введите название компании >> ")
                 founded = input("Введите год основания компании >> ")
                 number_phone = input("Введите номер телефона клиента >> ")
@@ -47,35 +47,35 @@ def main_loop():
 
                 add_client_company(name, founded, number_phone, email, site)
 
-            flag = False
+            is_working = False
 
         elif command == "2":
             watch_all_clients()
-            flag = False
+            is_working = False
 
         elif command == "3":
             edit_client()
-            flag = False
+            is_working = False
 
         elif command == "4":
             delete_client()
-            flag = False
+            is_working = False
 
         elif command == "5":
             search_client()
-            flag = False
+            is_working = False
 
         elif command == "6":
             filtering_clients()
-            flag = False
+            is_working = False
 
         elif command == "7":
             sort_client()
-            flag = False
+            is_working = False
 
         elif command == "8":
             find_statistic()
-            flag = False
+            is_working = False
 
         else:
             print("Некорректный ввод команды")

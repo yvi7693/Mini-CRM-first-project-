@@ -8,7 +8,7 @@ def show_input_message(message: str):
     print(message, end = "")
 
 def show_statement_message(message: str):
-    print(message, end = "")
+    print(message)
 
 def show_error_message(message: str):
-    print(message, end = "")
+    print(message)

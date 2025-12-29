@@ -8,16 +8,17 @@ def start():
     main_loop()
 
 def main_loop():
-    show_start_information()
-    show_input_message("Введите команду >> ")
-    command = input()
 
     is_working = True
     while is_working:
 
+        show_start_information()
+        show_input_message("Введите команду >> ")
+        command = input()
+
         if command == ADD_COMMAND:
 
-            show_input_message("Введите объект ввода: people/company >>")
+            show_input_message("Введите объект ввода: people/company >> ")
             client_type = input()
 
             if client_type == "people":
@@ -28,19 +29,21 @@ def main_loop():
                 show_input_message("Введите фамилию клиента >> ")
                 last_name = input()
 
-                show_input_message("Введите возвраст клиента >>")
+                show_input_message("Введите возвраст клиента >> ")
                 age = input()
 
-                show_input_message("Введите номер телефона клиента начиная c '+7' >> ")
+                show_input_message("Введите номер телефона клиента начиная c '8' >> ")
                 number_phone = input()
 
-                show_input_message("Введите почту клиента >>")
+                show_input_message("Введите почту клиента >> ")
                 email = input()
 
                 if validate_client_people(first_name, last_name, age, number_phone, email):
 
                     add_client_people(first_name, last_name, age, number_phone, email)
                     show_statement_message("Клиент успешно добавлен :)")
+
+                    continue
 
                 else:
 

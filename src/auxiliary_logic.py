@@ -48,6 +48,15 @@ def validate_site(site: str):
 
     return True
 
+def validate_founded(year: str) -> bool:
+    if not year.isdigit():
+        return False
+
+    if int(year) < 0:
+        return False
+
+    return True
+
 def write_json_file(path: str, dictionary: dict):
 
     if not os.path.isfile(path):

@@ -1,6 +1,6 @@
 import json
 import os
-
+from datetime import date
 
 def validate_name(name: str) -> bool:
     if len(name) == 0:
@@ -53,3 +53,17 @@ def write_json_file(path: str, dictionary: dict):
     with open(path, "w", encoding="UTF-8") as file:
         json.dump(dataset, file, indent = 4)
 
+
+def create_dictionary_people(first_name: str, last_name: str, age: int, number_phone: str, email: str) -> dict:
+
+    dictionary = {
+        "identifier_number": id(first_name),
+        "first_name": first_name,
+        "last_name": last_name,
+        "age": age,
+        "number_phone": number_phone,
+        "email": email,
+        "date_add": str(date.today())
+    }
+
+    return dictionary

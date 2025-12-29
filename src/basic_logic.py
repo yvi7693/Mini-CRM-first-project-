@@ -1,22 +1,10 @@
-from datetime import date
-
 from src.auxiliary_logic import *
 from src.constant import *
 
 
 def add_client_people(first_name: str, last_name: str, age: int, number_phone: str, email: str):
 
-
-    parameters_client = {
-        "identifier_number": id(first_name),
-        "first_name": first_name,
-        "last_name": last_name,
-        "age": age,
-        "number_phone": number_phone,
-        "email": email,
-        "date_add": str(date.today())
-    }
-
+    parameters_client = create_dictionary_people(first_name, last_name, age, number_phone, email)
     write_json_file(PATH_CLIENT, parameters_client)
 
 

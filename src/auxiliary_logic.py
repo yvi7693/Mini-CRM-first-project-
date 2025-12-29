@@ -39,6 +39,15 @@ def validate_email(email: str) -> bool:
 
     return True
 
+def validate_site(site: str):
+    if len(site) == 0:
+        return False
+
+    if not "https://" in site or not "." in site or " " in site:
+        return False
+
+    return True
+
 def write_json_file(path: str, dictionary: dict):
 
     if not os.path.isfile(path):

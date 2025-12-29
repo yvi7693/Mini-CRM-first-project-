@@ -8,7 +8,7 @@ def add_client_people(first_name: str, last_name: str, age: int, number_phone: s
     write_json_file(PATH_CLIENT, parameters_client)
 
 
-def add_client_company(name: str, founded: int, number_phone: str, email: str, site: str):
+def add_client_company(name: str, founded: str, number_phone: str, email: str, site: str):
     parameters_client = {
         "identifier_number": id(name),
         "name": name,
@@ -45,7 +45,7 @@ def find_statistic():
     pass
 
 def validate_client_people(first_name: str, last_name: str, age: str, number_phone: str, email: str) -> bool:
-    if validate_name(first_name) == False or validate_name(last_name) == False:
+    if not validate_name(first_name)  or not validate_name(last_name):
         return False
 
     if not validate_age(age):
@@ -55,6 +55,24 @@ def validate_client_people(first_name: str, last_name: str, age: str, number_pho
         return False
 
     if not validate_email(email):
+        return False
+
+    return True
+
+def validate_client_company(name: str, founded: str, number_phone: str, email: str, site: str) -> bool:
+    if not validate_name(name):
+        return False
+
+    if not validate_founded(founded):
+        return False
+
+    if not validate_number_phone(number_phone):
+        return False
+
+    if not validate_email(email):
+        return False
+
+    if validate_site(site):
         return False
 
     return True

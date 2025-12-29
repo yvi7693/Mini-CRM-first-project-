@@ -48,19 +48,40 @@ def main_loop():
                 else:
 
                     show_error_message("Не корректный ввод, попробуйте еще раз!!!")
+
                     continue
 
 
             elif client_type == "company":
-                name = input("Введите название компании >> ")
-                founded = input("Введите год основания компании >> ")
-                number_phone = input("Введите номер телефона клиента >> ")
-                email = input("Введите почту клиента >> ")
-                site = input("Введите сайт клиента >> ")
 
-                add_client_company(name, founded, number_phone, email, site)
+                show_input_message("Введите название компании >> ")
+                name = input()
 
-            is_working = False
+                show_input_message("Введите год основания компании >> ")
+                founded = input()
+
+                show_input_message("Введите номер телефона клиента >> ")
+                number_phone = input()
+
+                show_input_message("Введите почту клиента >> ")
+                email = input()
+
+                show_input_message("Введите сайт клиента >> ")
+                site = input()
+
+                if validate_client_company(name, founded, number_phone, email, site):
+
+                    add_client_company(name, founded, number_phone, email, site)
+                    show_statement_message("Клиент успешно добавлен :)")
+
+                    continue
+
+                else:
+
+                    show_error_message("Не корректный ввод, попробуйте еще раз!!!")
+
+                    continue
+
 
         elif command == LIST_COMMAND:
             watch_all_clients()

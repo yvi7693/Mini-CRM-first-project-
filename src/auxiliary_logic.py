@@ -85,3 +85,17 @@ def create_dictionary_people(first_name: str, last_name: str, age: int, number_p
     }
 
     return dictionary
+
+def create_dictionary_company(name: str, founded: str, number_phone: str, email: str, site: str) -> dict:
+
+    dictionary = {
+        "identifier_number": id(name),
+        "name": name,
+        "founded": founded,
+        "number_phone": number_phone,
+        "email": email,
+        "site": site,
+        "date_add": str(date.today())
+    }
+
+    return dictionary

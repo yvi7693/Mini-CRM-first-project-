@@ -9,19 +9,9 @@ def add_client_people(first_name: str, last_name: str, age: int, number_phone: s
 
 
 def add_client_company(name: str, founded: str, number_phone: str, email: str, site: str):
-    parameters_client = {
-        "identifier_number": id(name),
-        "name": name,
-        "founded": founded,
-        "number_phone": number_phone,
-        "email": email,
-        "site": site,
-        "date_add": str(date.today())
-    }
 
-    with open(PATH_CLIENT, "a", encoding="UTF-8") as file:
-        json.dump(parameters_client, file, indent = 4)
-        file.write(",")
+    parameters_client = create_dictionary_company(name, founded, number_phone, email, site)
+    write_json_file(PATH_CLIENT, parameters_client)
 
 def watch_all_clients():
     pass

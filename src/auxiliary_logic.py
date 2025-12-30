@@ -52,7 +52,7 @@ def validate_founded(year: str) -> bool:
     if not year.isdigit():
         return False
 
-    if int(year) < 0:
+    if int(year) < 0 or int(year) > date.today().year:
         return False
 
     return True

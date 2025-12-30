@@ -74,14 +74,13 @@ def main_loop():
                     add_client_company(name, founded, number_phone, email, site)
                     show_statement_message("Клиент успешно добавлен :)")
 
-                    continue
 
                 else:
 
                     show_error_message("Не корректный ввод, попробуйте еще раз!!!")
 
-                    continue
-
+            else:
+                show_error_message("Не корректный ввод, попробуйте еще раз!!!")
 
         elif command == LIST_COMMAND:
             watch_all_clients()
@@ -112,8 +111,8 @@ def main_loop():
             is_working = False
 
         else:
-            print("Некорректный ввод команды")
-            command = input("Введите команду >>")
+            show_error_message("Некорректный ввод команды!!! \n Попробуйте ещё раз.")
+
 
 
 

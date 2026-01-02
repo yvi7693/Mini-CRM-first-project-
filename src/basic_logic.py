@@ -2,19 +2,16 @@ from src.auxiliary_logic import *
 from src.constant import *
 
 
-def add_client_people(first_name: str, last_name: str, age: int, number_phone: str, email: str):
+def add_client(name: str, founded: str, number_phone: str, email: str):
 
-    parameters_client = create_dictionary_people(first_name, last_name, age, number_phone, email)
+    parameters_client = create_dictionary(name, founded, number_phone, email)
     write_json_file(PATH_CLIENT, parameters_client)
 
 
-def add_client_company(name: str, founded: str, number_phone: str, email: str, site: str):
+def watch_all_clients(path: str) -> list[dict]:
+    list_client = read_json_file(path)
 
-    parameters_client = create_dictionary_company(name, founded, number_phone, email, site)
-    write_json_file(PATH_CLIENT, parameters_client)
-
-def watch_all_clients():
-    pass
+    return list_client
 
 def edit_client():
     pass
@@ -34,23 +31,8 @@ def sort_client():
 def find_statistic():
     pass
 
-def validate_client_people(first_name: str, last_name: str, age: str, number_phone: str, email: str) -> bool:
-    if not validate_name(first_name)  or not validate_name(last_name):
-        return False
-
-    if not validate_age(age):
-        return False
-
-    if not validate_number_phone(number_phone):
-        return False
-
-    if not validate_email(email):
-        return False
-
-    return True
-
-def validate_client_company(name: str, founded: str, number_phone: str, email: str, site: str) -> bool:
-    if not validate_name(name):
+def validate_client(name: str, founded: str, number_phone: str, email: str) -> bool:
+    if not validate_name(name)  or not validate_name(name):
         return False
 
     if not validate_founded(founded):
@@ -60,9 +42,6 @@ def validate_client_company(name: str, founded: str, number_phone: str, email: s
         return False
 
     if not validate_email(email):
-        return False
-
-    if validate_site(site):
         return False
 
     return True

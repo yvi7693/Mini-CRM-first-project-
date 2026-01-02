@@ -18,73 +18,37 @@ def main_loop():
 
         if command == ADD_COMMAND:
 
-            show_input_message("Введите объект ввода: people/company >> ")
-            client_type = input()
+            show_input_message("Введите название компании >> ")
+            name = input()
 
-            if client_type == "people":
+            show_input_message("Введите год основания компании >> ")
+            founded = input()
 
-                show_input_message("Введите имя клиента >> ")
-                first_name = input()
+            show_input_message("Введите номер телефона клиента начиная c '8' >> ")
+            number_phone = input()
 
-                show_input_message("Введите фамилию клиента >> ")
-                last_name = input()
+            show_input_message("Введите почту клиента >> ")
+            email = input()
 
-                show_input_message("Введите возвраст клиента >> ")
-                age = input()
+            if validate_client(name, founded, number_phone, email):
 
-                show_input_message("Введите номер телефона клиента начиная c '8' >> ")
-                number_phone = input()
+                add_client(name, founded, number_phone, email)
+                show_info_message("Клиент успешно добавлен :)")
 
-                show_input_message("Введите почту клиента >> ")
-                email = input()
-
-                if validate_client_people(first_name, last_name, age, number_phone, email):
-
-                    add_client_people(first_name, last_name, age, number_phone, email)
-                    show_statement_message("Клиент успешно добавлен :)")
-
-                    continue
-
-                else:
-
-                    show_error_message("Не корректный ввод, попробуйте еще раз!!!")
-
-                    continue
-
-
-            elif client_type == "company":
-
-                show_input_message("Введите название компании >> ")
-                name = input()
-
-                show_input_message("Введите год основания компании >> ")
-                founded = input()
-
-                show_input_message("Введите номер телефона клиента >> ")
-                number_phone = input()
-
-                show_input_message("Введите почту клиента >> ")
-                email = input()
-
-                show_input_message("Введите сайт клиента >> ")
-                site = input()
-
-                if validate_client_company(name, founded, number_phone, email, site):
-
-                    add_client_company(name, founded, number_phone, email, site)
-                    show_statement_message("Клиент успешно добавлен :)")
-
-
-                else:
-
-                    show_error_message("Не корректный ввод, попробуйте еще раз!!!")
+                continue
 
             else:
+
                 show_error_message("Не корректный ввод, попробуйте еще раз!!!")
 
+                continue
+
+
         elif command == LIST_COMMAND:
-            watch_all_clients()
-            is_working = False
+            list_client = watch_all_clients(PATH_CLIENT)
+
+            show_info_message("ALL Clients:")
+            show_list_client(list_client)
 
         elif command == EDIT_COMMAND:
             edit_client()

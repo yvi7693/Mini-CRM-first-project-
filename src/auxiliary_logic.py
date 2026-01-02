@@ -11,15 +11,6 @@ def validate_name(name: str) -> bool:
 
     return True
 
-def validate_age(number: str) -> bool:
-    if not number.isdigit():
-        return False
-
-    if int(number) < 0 or int(number) > 200:
-        return False
-
-    return True
-
 
 def validate_number_phone(number_phone: str) -> bool:
     if not number_phone.isdigit():
@@ -35,15 +26,6 @@ def validate_email(email: str) -> bool:
         return False
 
     if not "@" in email or not "." in email:
-        return False
-
-    return True
-
-def validate_site(site: str):
-    if len(site) == 0:
-        return False
-
-    if not "https://" in site or not "." in site or " " in site:
         return False
 
     return True
@@ -71,22 +53,15 @@ def write_json_file(path: str, dictionary: dict):
     with open(path, "w", encoding="UTF-8") as file:
         json.dump(dataset, file, indent = 4)
 
+def read_json_file(path: str) -> list[dict]:
 
-def create_dictionary_people(first_name: str, last_name: str, age: int, number_phone: str, email: str) -> dict:
+    with open(path, "r", encoding="UTF-8") as file:
+        array_dictionary = json.load(file)
 
-    dictionary = {
-        "identifier_number": id(first_name),
-        "first_name": first_name,
-        "last_name": last_name,
-        "age": age,
-        "number_phone": number_phone,
-        "email": email,
-        "date_add": str(date.today())
-    }
+    return array_dictionary
 
-    return dictionary
 
-def create_dictionary_company(name: str, founded: str, number_phone: str, email: str, site: str) -> dict:
+def create_dictionary(name: str, founded: str, number_phone: str, email: str) -> dict:
 
     dictionary = {
         "identifier_number": id(name),
@@ -94,7 +69,6 @@ def create_dictionary_company(name: str, founded: str, number_phone: str, email:
         "founded": founded,
         "number_phone": number_phone,
         "email": email,
-        "site": site,
         "date_add": str(date.today())
     }
 

@@ -60,6 +60,11 @@ def read_json_file(path: str) -> list[dict]:
 
     return array_dictionary
 
+def edit_file(path: str, array_dictionary: list[dict]):
+
+    with open(path, 'w', encoding="UTF-8") as file:
+        json.dump(array_dictionary, file, indent=4)
+
 
 def create_dictionary(name: str, founded: str, number_phone: str, email: str) -> dict:
 

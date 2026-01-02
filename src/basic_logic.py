@@ -13,8 +13,13 @@ def watch_all_clients(path: str) -> list[dict]:
 
     return list_client
 
-def edit_client():
-    pass
+def edit_client(path: str, id: int, name: str, founded: str, number_phone: str, email: str):
+    array_clients = read_json_file(path)
+
+    array_clients[id] = create_dictionary(name, founded, number_phone, email)
+
+    edit_file(path, array_clients)
+
 
 def delete_client():
     pass

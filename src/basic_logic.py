@@ -4,7 +4,8 @@ from src.constant import *
 
 def add_client(name: str, founded: str, number_phone: str, email: str):
 
-    parameters_client = create_dictionary(name, founded, number_phone, email)
+    client_id = revel_id(PATH_CLIENT)
+    parameters_client = create_dictionary(client_id, name, founded, number_phone, email)
     write_json_file(PATH_CLIENT, parameters_client)
 
 

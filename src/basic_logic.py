@@ -77,4 +77,17 @@ def validate_id(client_id: str) -> bool:
 
     return True
 
+def validate_parameter(parameter: str) -> bool:
+    if parameter == "name":
+        return True
 
+    if parameter == "founded":
+        return True
+
+    if parameter == "phone":
+        return True
+
+    if parameter == "email":
+        return True
+
+    return False

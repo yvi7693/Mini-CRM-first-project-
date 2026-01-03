@@ -53,12 +53,17 @@ def write_json_file(path: str, dictionary: dict):
     with open(path, "w", encoding="UTF-8") as file:
         json.dump(dataset, file, indent = 4)
 
-def read_json_file(path: str) -> list[dict]:
+def read_json_file(path: str) -> list[dict] | None:
 
-    with open(path, "r", encoding="UTF-8") as file:
-        array_dictionary = json.load(file)
+    try:
+        with open(path, "r", encoding="UTF-8") as file:
+            array_dictionary = json.load(file)
+    except FileNotFoundError:
+        return None
 
-    return array_dictionary
+    else:
+        return array_dictionary
+
 
 def edit_file(path: str, array_dictionary: list[dict]):
 
@@ -66,10 +71,10 @@ def edit_file(path: str, array_dictionary: list[dict]):
         json.dump(array_dictionary, file, indent=4)
 
 
-def create_dictionary(name: str, founded: str, number_phone: str, email: str) -> dict:
+def create_dictionary(client_id: int, name: str, founded: str, number_phone: str, email: str) -> dict:
 
     dictionary = {
-        "identifier_number": id(name),
+        "identifier_number": client_id,
         "name": name,
         "founded": founded,
         "number_phone": number_phone,
@@ -78,3 +83,13 @@ def create_dictionary(name: str, founded: str, number_phone: str, email: str) ->
     }
 
     return dictionary
+
+def revel_id(path: str) -> int:
+
+    if not os.path.exists(path):
+        return 0
+
+    client_array = read_json_file(path)
+    client_id = len(client_array)
+
+    return client_id

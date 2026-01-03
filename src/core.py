@@ -84,8 +84,16 @@ def main_loop():
                     continue
 
         elif command == DELETE_COMMAND:
-            delete_client()
-            is_working = False
+            show_input_message("Введите id клиента которого хотели бы удалить >> ")
+            client_id = input()
+
+            if not validate_id(client_id):
+                show_error_message("Ввденный id не корректен")
+
+            else:
+                delete_client(int(client_id), PATH_CLIENT)
+                show_info_message("Клиент удалён")
+
 
         elif command == SEARCH_COMMAND:
             search_client()

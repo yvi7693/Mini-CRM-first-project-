@@ -22,8 +22,12 @@ def edit_client(path: str, client_id: int, name: str, founded: str, number_phone
     edit_file(path, array_clients)
 
 
-def delete_client():
-    pass
+def delete_client(client_id: int, path: str):
+    array_clients = read_json_file(path)
+
+    array_clients.pop(client_id)
+
+    edit_file(path, array_clients)
 
 def search_client():
     pass
@@ -54,6 +58,9 @@ def validate_client(name: str, founded: str, number_phone: str, email: str) -> b
 
 def validate_id(client_id: str) -> bool:
     if not client_id.isdigit():
+        return False
+
+    if revel_id(PATH_CLIENT) < int(client_id):
         return False
 
     return True

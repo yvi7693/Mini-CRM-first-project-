@@ -29,8 +29,20 @@ def delete_client(client_id: int, path: str):
 
     edit_file(path, array_clients)
 
-def search_client():
-    pass
+def search_client(path: str, parameter: str, search_value: str) -> list[dict] | None:
+    array_clients = read_json_file(path)
+
+    searching_array = []
+
+    for item in array_clients:
+        if item[parameter] == search_value:
+            searching_array.append(item)
+
+    if len(searching_array) != 0:
+        return searching_array
+
+    else:
+        return None
 
 def filtering_clients():
     pass
@@ -64,3 +76,5 @@ def validate_id(client_id: str) -> bool:
         return False
 
     return True
+
+

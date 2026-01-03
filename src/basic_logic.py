@@ -13,10 +13,10 @@ def watch_all_clients(path: str) -> list[dict]:
 
     return list_client
 
-def edit_client(path: str, id: int, name: str, founded: str, number_phone: str, email: str):
+def edit_client(path: str, client_id: int, name: str, founded: str, number_phone: str, email: str):
     array_clients = read_json_file(path)
 
-    array_clients[id] = create_dictionary(name, founded, number_phone, email)
+    array_clients[client_id] = create_dictionary(name, founded, number_phone, email)
 
     edit_file(path, array_clients)
 
@@ -47,6 +47,12 @@ def validate_client(name: str, founded: str, number_phone: str, email: str) -> b
         return False
 
     if not validate_email(email):
+        return False
+
+    return True
+
+def validate_id(client_id: str) -> bool:
+    if not client_id.isdigit():
         return False
 
     return True

@@ -17,7 +17,7 @@ def watch_all_clients(path: str) -> list[dict]:
 def edit_client(path: str, client_id: int, name: str, founded: str, number_phone: str, email: str):
     array_clients = read_json_file(path)
 
-    array_clients[client_id] = create_dictionary(name, founded, number_phone, email)
+    array_clients[client_id] = create_dictionary(client_id, name, founded, number_phone, email)
 
     edit_file(path, array_clients)
 

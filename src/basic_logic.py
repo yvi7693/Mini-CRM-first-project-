@@ -87,8 +87,12 @@ def sort_client_founded(type_sort: str, path: str) -> list[dict]:
     return array_clients
 
 
-def find_statistic():
-    pass
+def find_statistic(path: str) -> dict:
+    statistic = {
+        "count_client_last_week": count_client_last_week(path)
+    }
+
+    return statistic
 
 def validate_client(name: str, founded: str, number_phone: str, email: str) -> bool:
     if not validate_name(name)  or not validate_name(name):

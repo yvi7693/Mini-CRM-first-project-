@@ -32,3 +32,7 @@ def show_founded_year(list_client: list[dict]):
     print(f"{INFO_STYLE}Founded year:")
     for client in list_client:
         print(f"{LIST_STYLE} - {client['founded']}")
+
+
+def show_statistic(statistic: dict):
+    print(f"{LIST_STYLE}Количество клиентов за последнюю неделю: {statistic['count_client_last_week']}")

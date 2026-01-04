@@ -10,6 +10,7 @@ SEARCH_COMMAND = "search"
 FILTER_COMMAND = "filter"
 SORT_COMMAND = "sort"
 STAT_COMMAND = "stat"
+EXIT_COMMAND = "exit"
 
 MENU_STYLE = "\x1b[0;37m"
 LIST_STYLE = "\x1b[3;35m"

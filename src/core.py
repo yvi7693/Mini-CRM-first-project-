@@ -16,6 +16,9 @@ def main_loop():
         show_input_message("Введите команду >> ")
         command = input()
 
+
+
+
         if command == ADD_COMMAND:
 
             show_input_message("Введите название компании >> ")
@@ -44,11 +47,16 @@ def main_loop():
                 continue
 
 
+
+
         elif command == LIST_COMMAND:
             list_client = watch_all_clients(PATH_CLIENT)
 
             show_info_message("ALL Clients:")
             show_list_client(list_client)
+
+
+
 
         elif command == EDIT_COMMAND:
             show_input_message("Введите id клиента данные которого хотели бы отредактировать >> ")
@@ -83,6 +91,9 @@ def main_loop():
 
                     continue
 
+
+
+
         elif command == DELETE_COMMAND:
             show_input_message("Введите id клиента которого хотели бы удалить >> ")
             client_id = input()
@@ -93,6 +104,8 @@ def main_loop():
             else:
                 delete_client(int(client_id), PATH_CLIENT)
                 show_info_message("Клиент удалён")
+
+
 
 
         elif command == SEARCH_COMMAND:
@@ -198,6 +211,10 @@ def main_loop():
             find_statistic()
             is_working = False
 
+        elif command == EXIT_COMMAND:
+            stop()
+            break
+
         else:
             show_error_message("Некорректный ввод команды!!! \n Попробуйте ещё раз.")
 
@@ -205,5 +222,5 @@ def main_loop():
 
 
 def stop():
-    pass
+    show_info_message("work has been stopped.")
 

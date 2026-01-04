@@ -27,3 +27,8 @@ def show_list_client(list_client: list[dict]):
         print(f"{LIST_STYLE}date add: {client['date_add']}")
 
         print(f"{INFO_STYLE}=========================")
+
+def show_founded_year(list_client: list[dict]):
+    print(f"{INFO_STYLE}Founded year:")
+    for client in list_client:
+        print(f"{LIST_STYLE} - {client['founded']}")

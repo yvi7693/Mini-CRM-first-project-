@@ -51,11 +51,11 @@ def filtering_founded_clients(period: str, value: int, path: str) -> list[dict]:
     for client in array_clients:
 
         if period == "later":
-            if client['founded'] <= value:
+            if int(client['founded']) <= value:
                 filtering_clients.append(client)
 
         else:
-            if client['founded'] >= value:
+            if int(client['founded']) >= value:
                 filtering_clients.append(client)
 
     return filtering_clients
@@ -107,5 +107,15 @@ def validate_parameter(parameter: str) -> bool:
 
     return False
 
-def validate_filtering():
-    pass
+def validate_filtering_value(value: str):
+    if value.isdigit():
+        return True
+
+    if int(value) > 0:
+        return True
+
+    if validate_founded(value):
+        return True
+
+    return False
+

@@ -140,13 +140,13 @@ def main_loop():
             parameter = input()
 
             if parameter == "year":
-                show_input_message("Провести фильтрацию <- later/earlier ->")
+                show_input_message("Провести фильтрацию <- later/earlier -> >>")
                 period = input()
 
                 if period == "later" or period == "earlier":
 
                     show_founded_year(read_json_file(PATH_CLIENT))
-                    show_input_message("Введите год относительно которого нужно провести фильтрацию")
+                    show_input_message("Введите год относительно которого нужно провести фильтрацию >> ")
                     value = input()
 
                     if validate_filtering_value(value):
@@ -172,8 +172,27 @@ def main_loop():
 
 
         elif command == SORT_COMMAND:
-            sort_client()
-            is_working = False
+            show_input_message("Введите параметр по которому хотели бы провести сортировку year/... >> ")
+            parameter = input()
+
+            if parameter == "year":
+
+                show_input_message("Вид сортировки ascending - a / descending - d >> ")
+                type_sort = input()
+                if type_sort == "a" or type_sort == "d":
+
+                    sorted_clients = sort_client_founded(type_sort, PATH_CLIENT)
+                    show_info_message("Отсортированный список клиентов:")
+                    show_list_client(sorted_clients)
+
+                else:
+                    show_error_message("Введён некорректный тип сортировки!!! Попробуйте ещё раз.")
+
+            else:
+                show_error_message("Введен некорректный параметр!!! Попробуйте ещё раз.")
+
+
+
 
         elif command == STAT_COMMAND:
             find_statistic()

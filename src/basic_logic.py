@@ -140,4 +140,3 @@ def validate_filtering_value(value: str):
         return True
 
     return False
-

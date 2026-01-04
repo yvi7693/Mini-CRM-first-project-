@@ -11,7 +11,7 @@ FILTER_COMMAND = "filter"
 SORT_COMMAND = "sort"
 STAT_COMMAND = "stat"
 
-MENU_STYLE = "\x1b[3;37m"
+MENU_STYLE = "\x1b[0;37m"
 LIST_STYLE = "\x1b[3;35m"
 INPUT_STYLE = "\x1b[5;34m"
 INFO_STYLE = "\x1b[1;32m"

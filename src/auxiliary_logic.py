@@ -102,8 +102,15 @@ def count_client_last_week(path: str):
     count = 0
 
     for client in array_clients:
-        if client['date_add'] >= start_date:
+        if parsing_date(client['date_add']) >= start_date:
             count += 1
 
     return count
+
+def parsing_date(data: str) -> date:
+    year = int(data[0:4])
+    month = int(data[5:7])
+    days = int(data[8:10])
+
+    return date(year, month, days)
 

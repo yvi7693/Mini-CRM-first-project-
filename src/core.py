@@ -208,8 +208,10 @@ def main_loop():
 
 
         elif command == STAT_COMMAND:
-            find_statistic()
-            is_working = False
+
+            statistic = find_statistic(PATH_CLIENT)
+            show_info_message("Статистика по базе клиентов: ")
+            show_statistic(statistic)
 
         elif command == EXIT_COMMAND:
             stop()

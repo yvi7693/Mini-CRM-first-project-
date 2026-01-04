@@ -62,8 +62,30 @@ def filtering_founded_clients(period: str, value: int, path: str) -> list[dict]:
 
 
 
-def sort_client():
-    pass
+def sort_client_founded(type_sort: str, path: str) -> list[dict]:
+    array_clients = read_json_file(path)
+
+    for i in range(len(array_clients) - 1):
+
+        is_working = True
+
+        for j in range(len(array_clients) - 1):
+
+            if type_sort == "a":
+                if array_clients[j]['founded'] > array_clients[j+1]['founded']:
+                    array_clients[j], array_clients[j+1] = array_clients[j+1], array_clients[j]
+                    is_working = False
+
+            else:
+                if array_clients[j]['founded'] < array_clients[j + 1]['founded']:
+                    array_clients[j], array_clients[j + 1] = array_clients[j + 1], array_clients[j]
+                    is_working = False
+
+        if is_working:
+            break
+
+    return array_clients
+
 
 def find_statistic():
     pass

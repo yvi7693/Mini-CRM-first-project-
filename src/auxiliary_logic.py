@@ -1,6 +1,6 @@
 import json
 import os
-from datetime import date
+from datetime import date, timedelta
 
 def validate_name(name: str) -> bool:
     if len(name) == 0:
@@ -93,3 +93,17 @@ def revel_id(path: str) -> int:
     client_id = len(client_array)
 
     return client_id
+
+def count_client_last_week(path: str):
+    array_clients = read_json_file(path)
+
+    start_date = date.today() - timedelta(days=6)
+
+    count = 0
+
+    for client in array_clients:
+        if client['date_add'] >= start_date:
+            count += 1
+
+    return count
+

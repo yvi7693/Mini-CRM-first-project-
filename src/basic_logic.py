@@ -44,8 +44,23 @@ def search_client(path: str, parameter: str, search_value: str) -> list[dict] | 
     else:
         return None
 
-def filtering_clients():
-    pass
+def filtering_founded_clients(period: str, value: int, path: str) -> list[dict]:
+    array_clients = read_json_file(path)
+    filtering_clients = []
+
+    for client in array_clients:
+
+        if period == "later":
+            if client['founded'] <= value:
+                filtering_clients.append(client)
+
+        else:
+            if client['founded'] >= value:
+                filtering_clients.append(client)
+
+    return filtering_clients
+
+
 
 def sort_client():
     pass

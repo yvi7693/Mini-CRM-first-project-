@@ -106,3 +106,6 @@ def validate_parameter(parameter: str) -> bool:
         return True
 
     return False
+
+def validate_filtering():
+    pass

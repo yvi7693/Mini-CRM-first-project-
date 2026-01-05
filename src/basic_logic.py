@@ -2,32 +2,39 @@ from src.auxiliary_logic import *
 from src.constant import *
 
 
-def add_client(name: str, founded: str, number_phone: str, email: str):
+def add_client(name: str, founded: str, number_phone: str, email: str) -> None:
 
     client_id = revel_id(PATH_CLIENT)
     parameters_client = create_dictionary(client_id, name, founded, number_phone, email)
     write_json_file(PATH_CLIENT, parameters_client)
 
+    return None
 
 def watch_all_clients(path: str) -> list[dict]:
     list_client = read_json_file(path)
 
     return list_client
 
-def edit_client(path: str, client_id: int, name: str, founded: str, number_phone: str, email: str):
+
+def edit_client(path: str, client_id: int, name: str, founded: str, number_phone: str, email: str) -> None:
     array_clients = read_json_file(path)
 
     array_clients[client_id] = create_dictionary(client_id, name, founded, number_phone, email)
 
     edit_file(path, array_clients)
 
+    return None
 
-def delete_client(client_id: int, path: str):
+
+def delete_client(client_id: int, path: str) -> None:
     array_clients = read_json_file(path)
 
     array_clients.pop(client_id)
 
     edit_file(path, array_clients)
+
+    return None
+
 
 def search_client(path: str, parameter: str, search_value: str) -> list[dict] | None:
     array_clients = read_json_file(path)
@@ -133,7 +140,7 @@ def validate_parameter(parameter: str) -> bool:
 
     return False
 
-def validate_filtering_value(value: str):
+def validate_filtering_value(value: str) -> bool:
     if value.isdigit():
         return True
 

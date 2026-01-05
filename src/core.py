@@ -139,7 +139,6 @@ def main_loop():
                 else:
                     show_info_message("Клиенты соответствующие поисковому запросу:")
                     show_list_client(search_client(PATH_CLIENT, parameter, search_value))
-
             else:
                 show_error_message("Введен некорректный параметр!!!\nПопробуйте ещё раз.")
                 continue

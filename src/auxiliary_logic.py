@@ -39,7 +39,7 @@ def validate_founded(year: str) -> bool:
 
     return True
 
-def write_json_file(path: str, dictionary: dict):
+def write_json_file(path: str, dictionary: dict) -> None:
 
     if not os.path.isfile(path):
         dataset = [dictionary]
@@ -52,6 +52,8 @@ def write_json_file(path: str, dictionary: dict):
 
     with open(path, "w", encoding="UTF-8") as file:
         json.dump(dataset, file, indent = 4)
+
+        return None
 
 def read_json_file(path: str) -> list[dict] | None:
 
@@ -94,7 +96,7 @@ def revel_id(path: str) -> int:
 
     return client_id
 
-def count_client_last_week(path: str):
+def count_client_last_week(path: str) -> int:
     array_clients = read_json_file(path)
 
     start_date = date.today() - timedelta(days=6)

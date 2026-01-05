@@ -5,7 +5,7 @@ from src.constant import *
 def add_client(name: str, founded: str, number_phone: str, email: str) -> None:
 
     client_id = revel_id(PATH_CLIENT)
-    parameters_client = create_dictionary(client_id, name, founded, number_phone, email)
+    parameters_client = format_to_json(client_id, name, founded, number_phone, email)
     write_json_file(PATH_CLIENT, parameters_client)
 
     return None
@@ -19,7 +19,7 @@ def watch_all_clients(path: str) -> list[dict]:
 def edit_client(path: str, client_id: int, name: str, founded: str, number_phone: str, email: str) -> None:
     array_clients = read_json_file(path)
 
-    array_clients[client_id] = create_dictionary(client_id, name, founded, number_phone, email)
+    array_clients[client_id] = format_to_json(client_id, name, founded, number_phone, email)
 
     edit_file(path, array_clients)
 

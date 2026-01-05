@@ -81,7 +81,7 @@ def edit_file(path: str, array_dictionary: list[dict]):
         json.dump(array_dictionary, file, indent=4)
 
 
-def create_dictionary(client_id: int, name: str, founded: str, number_phone: str, email: str) -> dict:
+def format_to_json(client_id: int, name: str, founded: str, number_phone: str, email: str) -> dict:
 
     dictionary = {
         ID_KEY: client_id,

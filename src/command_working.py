@@ -25,7 +25,13 @@ def processing_add_client() -> None:
 
         show_error_message("Не корректный ввод, попробуйте еще раз!!!")
 
+    return None
 
 
+def processing_list_client() -> None:
+    list_client = watch_all_clients(PATH_CLIENT)
 
+    show_info_message("ALL Clients:")
+    show_list_client(list_client)
 
+    return None

@@ -30,9 +30,13 @@ def processing_add_client() -> None:
 
 def processing_list_client() -> None:
     list_client = watch_all_clients(PATH_CLIENT)
+    if list_client is None:
+        show_error_message("Нет клиентов!!! Чтобы просмотреть список, для начала добавьте своего первого клиента.")
 
-    show_info_message("ALL Clients:")
-    show_list_client(list_client)
+    else:
+
+        show_info_message("ALL Clients:")
+        show_list_client(list_client)
 
     return None
 

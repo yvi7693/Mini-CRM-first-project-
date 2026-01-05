@@ -85,4 +85,43 @@ def processing_delete_client() -> None:
     return None
 
 
+def processing_search_client() -> None:
+
+    show_input_message("Введите параметр по которому хотите осуществить поиск 'name/founded/phone/email' >> ")
+    parameter = input()
+
+    if validate_parameter(parameter):
+        if parameter == "name":
+            show_input_message("Введите имя компании >> ")
+            search_value = input()
+
+        elif parameter == "founded":
+            show_input_message("Введите год основания >> ")
+            search_value = input()
+
+        elif parameter == "phone":
+            show_input_message("Введите номер телефона >> ")
+            search_value = input()
+
+        elif parameter == "email":
+            show_input_message("Введите адрес электронно почты >> ")
+            search_value = input()
+
+        else:
+            show_error_message("Введен некорректный параметр!!!\nПопробуйте ещё раз.")
+
+
+        if search_client(PATH_CLIENT, parameter, search_value) is None:
+            show_error_message("Клиент по вашему запросу не найден")
+
+        else:
+            show_info_message("Клиенты соответствующие поисковому запросу:")
+            show_list_client(search_client(PATH_CLIENT, parameter, search_value))
+    else:
+        show_error_message("Введен некорректный параметр!!!\nПопробуйте ещё раз.")
+
+    return None
+
+
+
 

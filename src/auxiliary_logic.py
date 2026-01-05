@@ -70,7 +70,7 @@ def read_json_file(path: str) -> list[dict] | None:
 
         if not array_dictionary:
             return None
-        
+
         else:
             return array_dictionary
 

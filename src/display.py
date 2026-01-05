@@ -36,7 +36,7 @@ def show_list_client(list_client: list[dict]) -> None:
         print(f"{LIST_STYLE}id: {client['identifier_number']}")
         print(f"{LIST_STYLE}name company: {client['name']}")
         print(f"{LIST_STYLE}year founded: {client['founded']}")
-        print(f"{LIST_STYLE}phone: {client['number_phone']}")
+        print(f"{LIST_STYLE}phone: {client['phone']}")
         print(f"{LIST_STYLE}email: {client['email']}")
         print(f"{LIST_STYLE}date add: {client['date_add']}")
 

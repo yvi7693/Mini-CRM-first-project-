@@ -155,3 +155,29 @@ def processing_filtering_client() -> None:
     return None
 
 
+def processing_sort_client() -> None:
+
+    show_input_message("Введите параметр по которому хотели бы провести сортировку year/... >> ")
+    parameter = input()
+
+    if parameter == "year":
+
+        show_input_message("Вид сортировки ascending - a / descending - d >> ")
+        type_sort = input()
+        if type_sort == "a" or type_sort == "d":
+
+            sorted_clients = sort_client_founded(type_sort, PATH_CLIENT)
+            show_info_message("Отсортированный список клиентов:")
+            show_list_client(sorted_clients)
+
+        else:
+            show_error_message("Введён некорректный тип сортировки!!! Попробуйте ещё раз.")
+
+    else:
+        show_error_message("Введен некорректный параметр!!! Попробуйте ещё раз.")
+
+    return None
+
+
+
+

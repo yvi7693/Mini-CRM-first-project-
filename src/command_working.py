@@ -123,5 +123,35 @@ def processing_search_client() -> None:
     return None
 
 
+def processing_filtering_client() -> None:
+    show_input_message("Введите параметр по которому необходимо провести фильтрацию year/... >> ")
+    parameter = input()
+
+    if parameter == "year":
+        show_input_message("Провести фильтрацию <- later/earlier -> >>")
+        period = input()
+
+        if period == "later" or period == "earlier":
+
+            show_founded_year(read_json_file(PATH_CLIENT))
+            show_input_message("Введите год относительно которого нужно провести фильтрацию >> ")
+            value = input()
+
+            if validate_filtering_value(value):
+
+                filtering_clients = filtering_founded_clients(period, int(value), PATH_CLIENT)
+                show_info_message("Отфильтрованный список клиентов:")
+                show_list_client(filtering_clients)
+
+            else:
+                show_error_message("Введен не корректный год!!! Попробуйте ещё раз.")
+
+        else:
+            show_error_message("Введен некорректный период фильтрации!!! Попробуйте ещё раз.")
+
+    else:
+        show_error_message("Введен некорректный параметр!!! Попробуйте ещё раз.")
+
+    return None
 
 

@@ -67,7 +67,12 @@ def read_json_file(path: str) -> list[dict] | None:
         return None
 
     else:
-        return array_dictionary
+
+        if not array_dictionary:
+            return None
+        
+        else:
+            return array_dictionary
 
 
 def edit_file(path: str, array_dictionary: list[dict]):

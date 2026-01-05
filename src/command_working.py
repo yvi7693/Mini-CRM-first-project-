@@ -179,5 +179,11 @@ def processing_sort_client() -> None:
     return None
 
 
+def processing_statistic_client() -> None:
 
+    statistic = find_statistic(PATH_CLIENT)
+    show_info_message("Статистика по базе клиентов: ")
+    show_statistic(statistic)
+
+    return None
 

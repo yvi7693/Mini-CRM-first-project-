@@ -58,11 +58,11 @@ def filtering_founded_clients(period: str, value: int, path: str) -> list[dict]:
     for client in array_clients:
 
         if period == "later":
-            if int(client['founded']) <= value:
+            if int(client[FOUNDED_KEY]) <= value:
                 filtering_clients.append(client)
 
         else:
-            if int(client['founded']) >= value:
+            if int(client[FOUNDED_KEY]) >= value:
                 filtering_clients.append(client)
 
     return filtering_clients
@@ -79,12 +79,12 @@ def sort_client_founded(type_sort: str, path: str) -> list[dict]:
         for j in range(len(array_clients) - 1):
 
             if type_sort == "a":
-                if array_clients[j]['founded'] > array_clients[j+1]['founded']:
+                if array_clients[j][FOUNDED_KEY] > array_clients[j+1][FOUNDED_KEY]:
                     array_clients[j], array_clients[j+1] = array_clients[j+1], array_clients[j]
                     is_working = False
 
             else:
-                if array_clients[j]['founded'] < array_clients[j + 1]['founded']:
+                if array_clients[j][FOUNDED_KEY] < array_clients[j + 1][FOUNDED_KEY]:
                     array_clients[j], array_clients[j + 1] = array_clients[j + 1], array_clients[j]
                     is_working = False
 
@@ -126,16 +126,16 @@ def validate_id(client_id: str) -> bool:
     return True
 
 def validate_parameter(parameter: str) -> bool:
-    if parameter == "name":
+    if parameter == NAME_KEY:
         return True
 
-    if parameter == "founded":
+    if parameter == FOUNDED_KEY:
         return True
 
-    if parameter == "phone":
+    if parameter == PHONE_KEY:
         return True
 
-    if parameter == "email":
+    if parameter == EMAIL_KEY:
         return True
 
     return False

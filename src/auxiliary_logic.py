@@ -2,6 +2,9 @@ import json
 import os
 from datetime import date, timedelta
 
+from src.constant import ID_KEY, NAME_KEY, FOUNDED_KEY, PHONE_KEY, DATE_KEY, EMAIL_KEY
+
+
 def validate_name(name: str) -> bool:
     if len(name) == 0:
         return False
@@ -76,12 +79,12 @@ def edit_file(path: str, array_dictionary: list[dict]):
 def create_dictionary(client_id: int, name: str, founded: str, number_phone: str, email: str) -> dict:
 
     dictionary = {
-        "identifier_number": client_id,
-        "name": name,
-        "founded": founded,
-        "number_phone": number_phone,
-        "email": email,
-        "date_add": str(date.today())
+        ID_KEY: client_id,
+        NAME_KEY: name,
+        FOUNDED_KEY: founded,
+        PHONE_KEY: number_phone,
+        EMAIL_KEY: email,
+        DATE_KEY: str(date.today())
     }
 
     return dictionary
@@ -104,7 +107,7 @@ def count_client_last_week(path: str) -> int:
     count = 0
 
     for client in array_clients:
-        if parsing_date(client['date_add']) >= start_date:
+        if parsing_date(client[DATE_KEY]) >= start_date:
             count += 1
 
     return count

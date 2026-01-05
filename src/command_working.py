@@ -70,4 +70,19 @@ def processing_edit_client() -> None:
     return None
 
 
+def processing_delete_client() -> None:
+
+    show_input_message("Введите id клиента которого хотели бы удалить >> ")
+    client_id = input()
+
+    if not validate_id(client_id):
+        show_error_message("Ввденный id не корректен")
+
+    else:
+        delete_client(int(client_id), PATH_CLIENT)
+        show_info_message("Клиент удалён")
+
+    return None
+
+
 

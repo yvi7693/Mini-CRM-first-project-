@@ -22,3 +22,11 @@ FOUNDED_KEY = "founded"
 PHONE_KEY = "phone"
 EMAIL_KEY = "email"
 DATE_KEY = "date_add"
+
+YEAR_PROCESSING = "year"
+
+TYPE_SORT_A = "a"
+TYPE_SORT_D = "d"
+
+LATER_FILTER = "later"
+EARLIER_FILTER = "earlier"

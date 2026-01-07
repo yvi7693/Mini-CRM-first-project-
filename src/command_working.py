@@ -42,6 +42,7 @@ def processing_list_client() -> None:
 
 
 def processing_edit_client() -> None:
+    processing_list_client()
     show_input_message("Введите id клиента данные которого хотели бы отредактировать >> ")
     client_id = input()
 

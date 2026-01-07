@@ -124,7 +124,7 @@ def parsing_date(data: str) -> date:
 
     return date(year, month, days)
 
-def parsing_json(array: list[dict]):
+def parsing_json(array: list[dict]) -> list[dict]:
     for i in range(len(array)):
         array[i] = "id: " + str(array[i][ID_KEY]) + "\n" + "name: " + array[i][NAME_KEY] + "\n" + "founded: " + array[i][FOUNDED_KEY] + "\n" + "number phone: " + array[i][PHONE_KEY] + "\n" + "email: " + array[i][EMAIL_KEY]
 

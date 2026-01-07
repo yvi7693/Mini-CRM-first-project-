@@ -57,38 +57,38 @@ def processing_edit_client() -> None:
 
         if parameter == "name":
             show_input_message("Введите название компании >> ")
-            value = input()
+            edit_value = input()
 
-            if not validate_name(value):
+            if not validate_name(edit_value):
                 validating = False
 
 
         elif parameter == "founded":
             show_input_message("Введите год основания компании >> ")
-            value = input()
+            edit_value = input()
 
-            if not validate_founded(value):
+            if not validate_founded(edit_value):
                 validating = False
 
         elif parameter == "phone":
             show_input_message("Введите номер телефона клиента >> ")
-            value = input()
+            edit_value = input()
 
-            if not validate_number_phone(value):
+            if not validate_number_phone(edit_value):
                 validating = False
 
         elif parameter == "email":
             show_input_message("Введите электронную почту клиента >> ")
-            value = input()
+            edit_value = input()
 
-            if not validate_email(value):
+            if not validate_email(edit_value):
                 validating = False
 
         else:
             show_error_message("Введен некорректный параметр!!!\nПопробуйте ещё раз.")
 
         if validating:
-            edit_client(PATH_CLIENT, int(client_id), parameter, value)
+            edit_client(PATH_CLIENT, int(client_id), parameter, edit_value)
             show_info_message("Данные клиента успешно отредактированы :)")
 
 
@@ -119,19 +119,19 @@ def processing_search_client() -> None:
     parameter = input()
 
     if validate_parameter(parameter):
-        if parameter == "name":
+        if parameter == NAME_KEY:
             show_input_message("Введите имя компании >> ")
             search_value = input()
 
-        elif parameter == "founded":
+        elif parameter == FOUNDED_KEY:
             show_input_message("Введите год основания >> ")
             search_value = input()
 
-        elif parameter == "phone":
+        elif parameter == PHONE_KEY:
             show_input_message("Введите номер телефона >> ")
             search_value = input()
 
-        elif parameter == "email":
+        elif parameter == EMAIL_KEY:
             show_input_message("Введите адрес электронно почты >> ")
             search_value = input()
 
@@ -155,11 +155,11 @@ def processing_filtering_client() -> None:
     show_input_message("Введите параметр по которому необходимо провести фильтрацию year/... >> ")
     parameter = input()
 
-    if parameter == "year":
+    if parameter == YEAR_PROCESSING:
         show_input_message("Провести фильтрацию <- later/earlier -> >>")
         period = input()
 
-        if period == "later" or period == "earlier":
+        if period == LATER_FILTER or period == EARLIER_FILTER:
 
             show_founded_year(read_json_file(PATH_CLIENT))
             show_input_message("Введите год относительно которого нужно провести фильтрацию >> ")
@@ -188,11 +188,11 @@ def processing_sort_client() -> None:
     show_input_message("Введите параметр по которому хотели бы провести сортировку year/... >> ")
     parameter = input()
 
-    if parameter == "year":
+    if parameter == YEAR_PROCESSING:
 
         show_input_message("Вид сортировки ascending - a / descending - d >> ")
         type_sort = input()
-        if type_sort == "a" or type_sort == "d":
+        if type_sort == TYPE_SORT_A or type_sort == TYPE_SORT_D:
 
             sorted_clients = sort_client_founded(type_sort, PATH_CLIENT)
             show_info_message("Отсортированный список клиентов:")

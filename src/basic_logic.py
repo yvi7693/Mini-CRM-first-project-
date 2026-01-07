@@ -12,8 +12,9 @@ def add_client(name: str, founded: str, number_phone: str, email: str) -> None:
 
 def watch_all_clients(path: str) -> list[dict]:
     list_client = read_json_file(path)
+    new_list = parsing_json(list_client)
 
-    return list_client
+    return new_list
 
 
 def edit_client(path: str, client_id: int, parameter: str, value: str) -> None:
@@ -36,13 +37,13 @@ def delete_client(client_id: int, path: str) -> None:
     return None
 
 
-def search_client(path: str, parameter: str, search_value: str) -> list[dict] | None:
+def search_client(path: str, parameter: str, value: str) -> list[dict] | None:
     array_clients = read_json_file(path)
 
     searching_array = []
 
     for item in array_clients:
-        if item[parameter] == search_value:
+        if item[parameter] == value:
             searching_array.append(item)
 
     if len(searching_array) != 0:

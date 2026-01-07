@@ -1,5 +1,3 @@
-from pickle import ADDITEMS
-
 PATH_CLIENT = "client.json"
 
 ADD_COMMAND = "add"

@@ -1,6 +1,3 @@
-from src.basic_logic import *
-from src.display import *
-from src.constant import *
 from src.command_working import *
 
 
@@ -44,7 +41,7 @@ def main_loop():
 
         elif command == EXIT_COMMAND:
             stop()
-            break
+            is_working = False
 
         else:
             show_error_message("Некорректный ввод команды!!! \n Попробуйте ещё раз.")

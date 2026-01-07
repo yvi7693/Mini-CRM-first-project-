@@ -16,10 +16,10 @@ def watch_all_clients(path: str) -> list[dict]:
     return list_client
 
 
-def edit_client(path: str, client_id: int, name: str, founded: str, number_phone: str, email: str) -> None:
+def edit_client(path: str, client_id: int, parameter: str, value: str) -> None:
     array_clients = read_json_file(path)
 
-    array_clients[client_id] = format_to_json(client_id, name, founded, number_phone, email)
+    array_clients[client_id][parameter] = value
 
     edit_file(path, array_clients)
 
@@ -101,6 +101,7 @@ def find_statistic(path: str) -> dict:
 
     return statistic
 
+
 def validate_client(name: str, founded: str, number_phone: str, email: str) -> bool:
     if not validate_name(name)  or not validate_name(name):
         return False
@@ -120,10 +121,11 @@ def validate_id(client_id: str) -> bool:
     if not client_id.isdigit():
         return False
 
-    if revel_id(PATH_CLIENT) < int(client_id):
+    if revel_id(PATH_CLIENT) <= int(client_id):
         return False
 
     return True
+
 
 def validate_parameter(parameter: str) -> bool:
     if parameter == NAME_KEY:
@@ -139,6 +141,7 @@ def validate_parameter(parameter: str) -> bool:
         return True
 
     return False
+
 
 def validate_filtering_value(value: str) -> bool:
     if value.isdigit():

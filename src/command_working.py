@@ -50,25 +50,49 @@ def processing_edit_client() -> None:
 
     else:
 
-        show_input_message("Введите название компании >> ")
-        name = input()
+        show_input_message("Введите параметр который хотите изменить 'name/founded/phone/email' >> ")
+        parameter = input()
 
-        show_input_message("Введите год основания компании >> ")
-        founded = input()
+        validating = True
 
-        show_input_message("Введите номер телефона клиента начиная c '8' >> ")
-        number_phone = input()
+        if parameter == "name":
+            show_input_message("Введите название компании >> ")
+            value = input()
 
-        show_input_message("Введите почту клиента >> ")
-        email = input()
+            if not validate_name(value):
+                validating = False
 
-        if validate_client(name, founded, number_phone, email):
-            edit_client(PATH_CLIENT, int(client_id), name, founded, number_phone, email)
+
+        elif parameter == "founded":
+            show_input_message("Введите год основания компании >> ")
+            value = input()
+
+            if not validate_founded(value):
+                validating = False
+
+        elif parameter == "phone":
+            show_input_message("Введите номер телефона клиента >> ")
+            value = input()
+
+            if not validate_number_phone(value):
+                validating = False
+
+        elif parameter == "email":
+            show_input_message("Введите электронную почту клиента >> ")
+            value = input()
+
+            if not validate_email(value):
+                validating = False
+
+        else:
+            show_error_message("Введен некорректный параметр!!!\nПопробуйте ещё раз.")
+
+        if validating:
+            edit_client(PATH_CLIENT, int(client_id), parameter, value)
             show_info_message("Данные клиента успешно отредактированы :)")
 
 
         else:
-
             show_error_message("Не корректный ввод, попробуйте еще раз!!!")
 
     return None
@@ -80,7 +104,7 @@ def processing_delete_client() -> None:
     client_id = input()
 
     if not validate_id(client_id):
-        show_error_message("Ввденный id не корректен")
+        show_error_message("Введенный id не корректен")
 
     else:
         delete_client(int(client_id), PATH_CLIENT)

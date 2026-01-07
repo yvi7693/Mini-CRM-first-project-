@@ -30,3 +30,6 @@ TYPE_SORT_D = "d"
 
 LATER_FILTER = "later"
 EARLIER_FILTER = "earlier"
+
+YES = "y"
+NO = "n"

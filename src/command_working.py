@@ -100,6 +100,7 @@ def processing_edit_client() -> None:
 
 
 def processing_delete_client() -> None:
+    processing_list_client()
 
     show_input_message("Введите id клиента которого хотели бы удалить >> ")
     client_id = input()
@@ -108,8 +109,14 @@ def processing_delete_client() -> None:
         show_error_message("Введенный id не корректен")
 
     else:
-        delete_client(int(client_id), PATH_CLIENT)
-        show_info_message("Клиент удалён")
+        show_input_message("Вы уверены что хотите удалить клинта из списка y/n >> ")
+        permission = input()
+        if permission == YES:
+            delete_client(int(client_id), PATH_CLIENT)
+            show_info_message("Клиент удалён")
+
+        else:
+            show_error_message("Удаление клиента отменено.")
 
     return None
 

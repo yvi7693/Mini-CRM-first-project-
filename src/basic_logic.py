@@ -5,13 +5,18 @@ from src.constant import *
 def add_client(name: str, founded: str, number_phone: str, email: str) -> None:
 
     client_id = revel_id(PATH_CLIENT)
+
     parameters_client = format_to_json(client_id, name, founded, number_phone, email)
     write_json_file(PATH_CLIENT, parameters_client)
 
     return None
 
-def watch_all_clients(path: str) -> list[dict]:
+def watch_all_clients(path: str) -> list[dict] | None:
     list_client = read_json_file(path)
+
+    if list_client is None:
+        return None
+
     new_list = parsing_json(list_client)
 
     return new_list
@@ -19,6 +24,9 @@ def watch_all_clients(path: str) -> list[dict]:
 
 def edit_client(path: str, client_id: int, parameter: str, value: str) -> None:
     array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
 
     array_clients[client_id][parameter] = value
 
@@ -46,14 +54,18 @@ def search_client(path: str, parameter: str, value: str) -> list[dict] | None:
         if item[parameter] == value:
             searching_array.append(item)
 
-    if len(searching_array) != 0:
-        return searching_array
-
-    else:
+    if len(searching_array) == 0:
         return None
 
-def filtering_founded_clients(period: str, value: int, path: str) -> list[dict]:
+    else:
+        return searching_array
+
+def filtering_founded_clients(period: str, value: int, path: str) -> list[dict] | None:
     array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
+
     filtering_clients = []
 
     for client in array_clients:
@@ -70,8 +82,11 @@ def filtering_founded_clients(period: str, value: int, path: str) -> list[dict]:
 
 
 
-def sort_client_founded(type_sort: str, path: str) -> list[dict]:
+def sort_client_founded(type_sort: str, path: str) -> list[dict] | None:
     array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
 
     for i in range(len(array_clients) - 1):
 
@@ -95,10 +110,13 @@ def sort_client_founded(type_sort: str, path: str) -> list[dict]:
     return array_clients
 
 
-def find_statistic(path: str) -> dict:
+def find_statistic(path: str) -> dict | None:
     statistic = {
         "count_client_last_week": count_client_last_week(path)
     }
+
+    if statistic["count_client_last_week"] is None:
+        return None
 
     return statistic
 

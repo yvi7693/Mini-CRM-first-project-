@@ -19,7 +19,7 @@ def main_loop():
             processing_add_client()
 
         elif command == LIST_COMMAND:
-            processing_list_client()
+            try_processing_list_client()
 
         elif command == EDIT_COMMAND:
            processing_edit_client()

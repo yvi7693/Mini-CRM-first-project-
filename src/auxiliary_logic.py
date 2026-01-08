@@ -94,18 +94,25 @@ def format_to_json(client_id: int, name: str, founded: str, number_phone: str, e
 
     return dictionary
 
-def revel_id(path: str) -> int:
+def revel_id(path: str) -> int | None:
 
     if not os.path.exists(path):
         return 0
 
     client_array = read_json_file(path)
+
+    if client_array is None:
+        return 0
+
     client_id = len(client_array)
 
     return client_id
 
-def count_client_last_week(path: str) -> int:
+def count_client_last_week(path: str) -> int | None:
     array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
 
     start_date = date.today() - timedelta(days=6)
 
@@ -129,5 +136,4 @@ def parsing_json(array: list[dict]) -> list[dict]:
         array[i] = "id: " + str(array[i][ID_KEY]) + "\n" + "name: " + array[i][NAME_KEY] + "\n" + "founded: " + array[i][FOUNDED_KEY] + "\n" + "number phone: " + array[i][PHONE_KEY] + "\n" + "email: " + array[i][EMAIL_KEY]
 
     return array
-
 

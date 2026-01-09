@@ -204,7 +204,7 @@ def processing_search_client() -> None:
 
 
 def processing_filtering_client() -> None:
-    show_input_message("Введите параметр по которому необходимо провести фильтрацию year/... >> ")
+    show_input_message("Введите параметр по которому необходимо провести фильтрацию 'year/data' >> ")
     parameter = input()
 
     if parameter == YEAR_PROCESSING:
@@ -238,6 +238,35 @@ def processing_filtering_client() -> None:
 
         else:
             show_error_message("Введен некорректный период фильтрации!!! Попробуйте ещё раз.")
+
+    elif parameter == DATA_PROCESSING:
+
+        show_input_message("Введите дату начала фильтрации 'YYYY-MM-DD' >> ")
+        start_data = input()
+
+        show_input_message("Введите дату конца фильтрации 'YYYY-MM-DD' >> ")
+        stop_data = input()
+
+        if validate_data(start_data, stop_data):
+
+            filtering_clients = filtering_data(PATH_CLIENT, start_data, stop_data)
+
+            if filtering_clients is None:
+                show_error_message("Список клиентов пуст!!!\nДобавьте первого клиента")
+
+            else:
+
+                if filtering_clients == []:
+                    show_error_message("Нет клиентов подходящих под фильтр")
+
+                else:
+                    show_info_message("Отфильтрованный список клиентов:")
+
+                    filtering_clients = parsing_json(filtering_clients)
+                    show_list_client(filtering_clients)
+
+        else:
+            show_error_message("Введена некорректная дата!!! Попробуйте ещё раз.")
 
     else:
         show_error_message("Введен некорректный параметр!!! Попробуйте ещё раз.")

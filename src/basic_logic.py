@@ -1,5 +1,6 @@
 from src.auxiliary_logic import *
 from src.constant import *
+from datetime import date, timedelta
 
 
 def add_client(name: str, status: str, founded: str, number_phone: str, email: str, country: str) -> None:
@@ -79,6 +80,26 @@ def filtering_founded_clients(period: str, value: int, path: str) -> list[dict] 
                 filtering_clients.append(client)
 
     return filtering_clients
+
+def filtering_data(path: str, start_data: str, stop_data: str):
+    start_data = parsing_date(start_data)
+    stop_data = parsing_date(stop_data)
+
+    array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
+
+    filtering_clients = []
+
+    for item in array_clients:
+        if parsing_date(item[DATE_KEY]) > start_data and parsing_date(item[DATE_KEY]) < stop_data:
+            filtering_clients.append(item)
+
+    return filtering_clients
+
+
+
 
 
 
@@ -198,3 +219,15 @@ def overwriting_id(path: str) -> None:
     edit_file(path, list_client)
 
     return None
+
+def validate_data(start_data: str, stop_data: str) -> bool:
+    start_data = parsing_date(start_data)
+    stop_data = parsing_date(stop_data)
+
+    if start_data >= stop_data:
+        return False
+
+    if start_data > date.today() or stop_data > date.today():
+        return False
+
+    return True

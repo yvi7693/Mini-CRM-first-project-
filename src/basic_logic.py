@@ -2,11 +2,11 @@ from src.auxiliary_logic import *
 from src.constant import *
 
 
-def add_client(name: str, founded: str, number_phone: str, email: str) -> None:
+def add_client(name: str, status: str, founded: str, number_phone: str, email: str, country: str) -> None:
 
     client_id = revel_id(PATH_CLIENT)
 
-    parameters_client = format_to_json(client_id, name, founded, number_phone, email)
+    parameters_client = format_to_json(client_id, name, status, founded, number_phone, email, country)
     write_json_file(PATH_CLIENT, parameters_client)
 
     return None
@@ -121,8 +121,11 @@ def find_statistic(path: str) -> dict | None:
     return statistic
 
 
-def validate_client(name: str, founded: str, number_phone: str, email: str) -> bool:
-    if not validate_name(name)  or not validate_name(name):
+def validate_client(name: str, status: str, founded: str, number_phone: str, email: str, country: str) -> bool:
+    if not validate_name(name):
+        return False
+
+    if not validate_status(status):
         return False
 
     if not validate_founded(founded):
@@ -132,6 +135,9 @@ def validate_client(name: str, founded: str, number_phone: str, email: str) -> b
         return False
 
     if not validate_email(email):
+        return False
+
+    if not validate_country(country):
         return False
 
     return True
@@ -150,6 +156,8 @@ def validate_parameter(parameter: str) -> bool:
     if parameter == NAME_KEY:
         return True
 
+    if parameter == STATUS_KEY:
+        return True
     if parameter == FOUNDED_KEY:
         return True
 
@@ -157,6 +165,9 @@ def validate_parameter(parameter: str) -> bool:
         return True
 
     if parameter == EMAIL_KEY:
+        return True
+
+    if parameter == COUNTRY_KEY:
         return True
 
     return False
@@ -177,6 +188,9 @@ def validate_filtering_value(value: str) -> bool:
 
 def overwriting_id(path: str) -> None:
     list_client = read_json_file(path)
+
+    if list_client is None:
+        return None
 
     for i in range(len(list_client)):
         list_client[i][ID_KEY] = i

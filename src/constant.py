@@ -18,9 +18,11 @@ ERROR_STYLE = "\x1b[1;31m"
 
 ID_KEY = "identifier_number"
 NAME_KEY = "name"
+STATUS_KEY = "status"
 FOUNDED_KEY = "founded"
 PHONE_KEY = "phone"
 EMAIL_KEY = "email"
+COUNTRY_KEY = "country"
 DATE_KEY = "date_add"
 
 YEAR_PROCESSING = "year"
@@ -33,3 +35,7 @@ EARLIER_FILTER = "earlier"
 
 YES = "y"
 NO = "n"
+
+WORK_STATUS = "work"
+ACTIVE_STATUS = "active"
+ARCHIVE_STATUS = "archive"

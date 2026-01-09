@@ -2,7 +2,8 @@ import json
 import os
 from datetime import date, timedelta
 
-from src.constant import ID_KEY, NAME_KEY, FOUNDED_KEY, PHONE_KEY, DATE_KEY, EMAIL_KEY
+from src.constant import ID_KEY, NAME_KEY, FOUNDED_KEY, PHONE_KEY, DATE_KEY, EMAIL_KEY, STATUS_KEY, COUNTRY_KEY, \
+    WORK_STATUS, ACTIVE_STATUS, ARCHIVE_STATUS
 
 
 def validate_name(name: str) -> bool:
@@ -13,6 +14,12 @@ def validate_name(name: str) -> bool:
         return False
 
     return True
+
+def validate_status(status: str) -> bool:
+    if status == WORK_STATUS or status == ACTIVE_STATUS or status == ARCHIVE_STATUS:
+        return True
+
+    return False
 
 
 def validate_number_phone(number_phone: str) -> bool:
@@ -38,6 +45,12 @@ def validate_founded(year: str) -> bool:
         return False
 
     if int(year) < 0 or int(year) > date.today().year:
+        return False
+
+    return True
+
+def validate_country(country: str) -> bool:
+    if len(country) == 0:
         return False
 
     return True
@@ -81,14 +94,16 @@ def edit_file(path: str, array_dictionary: list[dict]):
         json.dump(array_dictionary, file, indent=4)
 
 
-def format_to_json(client_id: int, name: str, founded: str, number_phone: str, email: str) -> dict:
+def format_to_json(client_id: int, name: str, status: str, founded: str, number_phone: str, email: str, country: str) -> dict:
 
     dictionary = {
         ID_KEY: client_id,
         NAME_KEY: name,
+        STATUS_KEY: status,
         FOUNDED_KEY: founded,
         PHONE_KEY: number_phone,
         EMAIL_KEY: email,
+        COUNTRY_KEY: country,
         DATE_KEY: str(date.today())
     }
 
@@ -133,7 +148,7 @@ def parsing_date(data: str) -> date:
 
 def parsing_json(array: list[dict]) -> list[dict]:
     for i in range(len(array)):
-        array[i] = "id: " + str(array[i][ID_KEY]) + "\n" + "name: " + array[i][NAME_KEY] + "\n" + "founded: " + array[i][FOUNDED_KEY] + "\n" + "number phone: " + array[i][PHONE_KEY] + "\n" + "email: " + array[i][EMAIL_KEY]
+        array[i] = "id: " + str(array[i][ID_KEY]) + "\n" + "name: " + array[i][NAME_KEY] + "\n" + "status: " + str(array[i][STATUS_KEY]) + "\n" + "founded: " + array[i][FOUNDED_KEY] + "\n" + "number phone: " + array[i][PHONE_KEY] + "\n" + "email: " + array[i][EMAIL_KEY] + "\n" + "country: " + str(array[i][COUNTRY_KEY]) + "\n" + "add date: " + str(array[i][DATE_KEY]) + "\n"
 
     return array
 

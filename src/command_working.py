@@ -6,6 +6,9 @@ def processing_add_client() -> None:
     show_input_message("Введите название компании >> ")
     name = input()
 
+    show_input_message("Введите статус клиента 'work/active/archive' >> ")
+    status = input()
+
     show_input_message("Введите год основания компании >> ")
     founded = input()
 
@@ -15,9 +18,12 @@ def processing_add_client() -> None:
     show_input_message("Введите почту клиента >> ")
     email = input()
 
-    if validate_client(name, founded, number_phone, email):
+    show_input_message("Введите страну клиента >> ")
+    country = input()
 
-        add_client(name, founded, number_phone, email)
+    if validate_client(name, status, founded, number_phone, email, country):
+
+        add_client(name, status, founded, number_phone, email, country)
         show_info_message("Клиент успешно добавлен :)")
 
 
@@ -48,11 +54,11 @@ def processing_edit_client() -> None:
         client_id = input()
 
         if not validate_id(client_id):
-            show_error_message("Ввденный id не корректен")
+            show_error_message("Введенный id не корректен")
 
         else:
 
-            show_input_message("Введите параметр который хотите изменить 'name/founded/phone/email' >> ")
+            show_input_message("Введите параметр который хотите изменить 'name/status/founded/phone/email/country' >> ")
             parameter = input()
 
             validating = True
@@ -64,6 +70,12 @@ def processing_edit_client() -> None:
                 if not validate_name(edit_value):
                     validating = False
 
+            elif parameter == STATUS_KEY:
+                show_input_message("Введите статус компании 'work/active/archive' >> ")
+                edit_value = input()
+
+                if not validate_status(edit_value):
+                    validating = False
 
             elif parameter == FOUNDED_KEY:
                 show_input_message("Введите год основания компании >> ")
@@ -84,6 +96,13 @@ def processing_edit_client() -> None:
                 edit_value = input()
 
                 if not validate_email(edit_value):
+                    validating = False
+
+            elif parameter == COUNTRY_KEY:
+                show_input_message("Введите страну компании >> ")
+                edit_value = input()
+
+                if not validate_country(edit_value):
                     validating = False
 
             else:
@@ -122,7 +141,7 @@ def processing_delete_client() -> None:
                 show_info_message("Клиент удалён")
 
             else:
-                
+
                 show_error_message("Удаление клиента отменено.")
 
     else:
@@ -132,12 +151,16 @@ def processing_delete_client() -> None:
 
 def processing_search_client() -> None:
 
-    show_input_message("Введите параметр по которому хотите осуществить поиск 'name/founded/phone/email' >> ")
+    show_input_message("Введите параметр по которому хотите осуществить поиск 'name/status/founded/phone/email/country' >> ")
     parameter = input()
 
     if validate_parameter(parameter):
         if parameter == NAME_KEY:
             show_input_message("Введите имя компании >> ")
+            search_value = input()
+
+        elif parameter == STATUS_KEY:
+            show_input_message("Введите статус компании 'work/active/archive' >> ")
             search_value = input()
 
         elif parameter == FOUNDED_KEY:
@@ -150,6 +173,10 @@ def processing_search_client() -> None:
 
         elif parameter == EMAIL_KEY:
             show_input_message("Введите адрес электронно почты >> ")
+            search_value = input()
+
+        elif parameter == COUNTRY_KEY:
+            show_input_message("Введиите страну компании >> ")
             search_value = input()
 
         else:

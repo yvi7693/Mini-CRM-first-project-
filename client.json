@@ -2,9 +2,11 @@
     {
         "identifier_number": 0,
         "name": "bloones",
+        "status": "work",
         "founded": "2000",
         "phone": "89696588194",
-        "email": "yvi_7693@icloud.com",
+        "email": "yvi_7693@icloud.cim",
+        "country": "Russia",
         "date_add": "2026-01-09"
     }
 ]

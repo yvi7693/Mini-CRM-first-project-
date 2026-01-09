@@ -173,3 +173,14 @@ def validate_filtering_value(value: str) -> bool:
         return True
 
     return False
+
+
+def overwriting_id(path: str) -> None:
+    list_client = read_json_file(path)
+
+    for i in range(len(list_client)):
+        list_client[i][ID_KEY] = i
+
+    edit_file(path, list_client)
+
+    return None

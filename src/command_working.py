@@ -115,10 +115,14 @@ def processing_delete_client() -> None:
             show_input_message("Вы уверены что хотите удалить клинта из списка y/n >> ")
             permission = input()
             if permission == YES:
+
                 delete_client(int(client_id), PATH_CLIENT)
+                overwriting_id(PATH_CLIENT)
+
                 show_info_message("Клиент удалён")
 
             else:
+                
                 show_error_message("Удаление клиента отменено.")
 
     else:

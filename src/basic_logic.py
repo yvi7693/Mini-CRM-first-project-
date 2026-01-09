@@ -1,6 +1,6 @@
 from src.auxiliary_logic import *
 from src.constant import *
-from datetime import date, timedelta
+from datetime import date
 
 
 def add_client(name: str, status: str, founded: str, number_phone: str, email: str, country: str) -> None:
@@ -99,10 +99,6 @@ def filtering_data(path: str, start_data: str, stop_data: str):
     return filtering_clients
 
 
-
-
-
-
 def sort_client_founded(type_sort: str, path: str) -> list[dict] | None:
     array_clients = read_json_file(path)
 
@@ -129,6 +125,24 @@ def sort_client_founded(type_sort: str, path: str) -> list[dict] | None:
             break
 
     return array_clients
+
+
+def sort_client_alphabet(path: str, type_sort: str):
+    list_client = read_json_file(path)
+
+    if list_client is None:
+        return None
+
+    if type_sort == TYPE_SORT_A_Z:
+        list_client.sort(key = lambda client: client[NAME_KEY])
+
+    else:
+        list_client.sort(key = lambda client: client[NAME_KEY], reverse = True)
+
+    return list_client
+
+
+
 
 
 def find_statistic(path: str) -> dict | None:

@@ -276,7 +276,7 @@ def processing_filtering_client() -> None:
 
 def processing_sort_client() -> None:
 
-    show_input_message("Введите параметр по которому хотели бы провести сортировку year/... >> ")
+    show_input_message("Введите параметр по которому хотели бы провести сортировку year/alphabet >> ")
     parameter = input()
 
     if parameter == YEAR_PROCESSING:
@@ -298,6 +298,21 @@ def processing_sort_client() -> None:
 
         else:
             show_error_message("Введён некорректный тип сортировки!!! Попробуйте ещё раз.")
+
+    elif parameter == ALPHABET_PROCESSING:
+
+        show_input_message("Вид сортировки 'A-Z / Z-A'  >> ")
+        type_sort = input()
+
+        if type_sort == TYPE_SORT_A_Z or type_sort == TYPE_SORT_Z_A:
+
+            sorted_clients = sort_client_alphabet(PATH_CLIENT, type_sort)
+
+            show_info_message("Отсортированный список клиентов:")
+
+            sorted_clients = parsing_json(sorted_clients)
+            show_list_client(sorted_clients)
+
 
     else:
         show_error_message("Введен некорректный параметр!!! Попробуйте ещё раз.")

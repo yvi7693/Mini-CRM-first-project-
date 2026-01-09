@@ -96,6 +96,9 @@ def edit_file(path: str, array_dictionary: list[dict]):
 
 def format_to_json(client_id: int, name: str, status: str, founded: str, number_phone: str, email: str, country: str) -> dict:
 
+    name = name[0].upper() + name[1:]
+    country = country[0].upper() + country[1:]
+
     dictionary = {
         ID_KEY: client_id,
         NAME_KEY: name,

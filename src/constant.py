@@ -27,9 +27,13 @@ DATE_KEY = "date_add"
 
 YEAR_PROCESSING = "year"
 DATA_PROCESSING = "data"
+ALPHABET_PROCESSING = "alphabet"
 
 TYPE_SORT_A = "a"
 TYPE_SORT_D = "d"
+TYPE_SORT_A_Z = "A-Z"
+TYPE_SORT_Z_A = "Z-A"
+
 
 LATER_FILTER = "later"
 EARLIER_FILTER = "earlier"

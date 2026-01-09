@@ -48,6 +48,12 @@ def show_founded_year(list_client: list[dict]) -> None:
 
 
 def show_statistic(statistic: dict) -> None:
-    print(f"{LIST_STYLE}Количество клиентов за последнюю неделю: {statistic['count_client_last_week']}")
+    print(f"{LIST_STYLE}Количество клиентов за последнюю неделю: {statistic[LAST_WEEK_COUNT_KEY]}")
+    print(f"{LIST_STYLE}Количество отечественных клиентов: {statistic[DOMESTIC_COUNT_KEY]}")
+    print(f"{LIST_STYLE}Количество зарубежных клиентов: {statistic[FOREIGN_COUNT_KEY]}")
+    print(f"{LIST_STYLE}Количество клиентов в работе: {statistic[WORKING_COUNT_KEY]}")
+
+
+    print(f"{INFO_STYLE}===============================")
 
     return None

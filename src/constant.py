@@ -40,3 +40,9 @@ NO = "n"
 WORK_STATUS = "work"
 ACTIVE_STATUS = "active"
 ARCHIVE_STATUS = "archive"
+
+
+LAST_WEEK_COUNT_KEY = "client_last_week"
+DOMESTIC_COUNT_KEY = "domestic_client"
+FOREIGN_COUNT_KEY = "foreign_client"
+WORKING_COUNT_KEY = "working_client"

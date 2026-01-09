@@ -133,10 +133,22 @@ def sort_client_founded(type_sort: str, path: str) -> list[dict] | None:
 
 def find_statistic(path: str) -> dict | None:
     statistic = {
-        "count_client_last_week": count_client_last_week(path)
+        LAST_WEEK_COUNT_KEY: count_client_last_week(path),
+        DOMESTIC_COUNT_KEY: count_domestic_client(path),
+        FOREIGN_COUNT_KEY: count_foreign_client(path),
+        WORKING_COUNT_KEY: count_working_client(path)
     }
 
-    if statistic["count_client_last_week"] is None:
+    if statistic[LAST_WEEK_COUNT_KEY] is None:
+        return None
+
+    if statistic[DOMESTIC_COUNT_KEY] is None:
+        return None
+
+    if statistic[FOREIGN_COUNT_KEY] is None:
+        return None
+
+    if statistic[WORKING_COUNT_KEY] is None:
         return None
 
     return statistic

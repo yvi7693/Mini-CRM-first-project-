@@ -139,6 +139,49 @@ def count_client_last_week(path: str) -> int | None:
 
     return count
 
+def count_domestic_client(path: str):
+    array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
+
+    count = 0
+
+    for item in array_clients:
+        if item[COUNTRY_KEY] == "Russia":
+            count += 1
+
+    return count
+
+
+def count_foreign_client(path: str):
+    array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
+
+    count = 0
+
+    for item in array_clients:
+        if item[COUNTRY_KEY] != "Russia":
+            count += 1
+
+    return count
+
+def count_working_client(path):
+    array_clients = read_json_file(path)
+
+    if array_clients is None:
+        return None
+
+    count = 0
+
+    for item in array_clients:
+        if item[STATUS_KEY] == WORK_STATUS:
+            count += 1
+
+    return count
+
 def parsing_date(data: str) -> date:
     year = int(data[0:4])
     month = int(data[5:7])

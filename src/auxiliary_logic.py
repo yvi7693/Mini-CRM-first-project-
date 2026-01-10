@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import date, timedelta
+from src.constant import *
 
 from src.constant import ID_KEY, NAME_KEY, FOUNDED_KEY, PHONE_KEY, DATE_KEY, EMAIL_KEY, STATUS_KEY, COUNTRY_KEY, \
     WORK_STATUS, ACTIVE_STATUS, ARCHIVE_STATUS
@@ -198,6 +199,23 @@ def parsing_json(array: list[dict]) -> list[dict]:
 
     return array
 
+def parsing_to_founded(path: str) -> list[dict] | None:
+    list_client = read_json_file(path)
+
+    if list_client is None:
+        return None
+
+    list_founded = []
+
+    for item in list_client:
+        list_founded.append(item[FOUNDED_KEY])
+
+    return list_founded
+
+def parsing_to_statistic(statistic: dict):
+    list_statistic = f"Количество клиентов за последнюю неделю: {statistic[LAST_WEEK_COUNT_KEY]}\nКоличество отечественных клиентов: {statistic[DOMESTIC_COUNT_KEY]}\nКоличество зарубежных клиентов: {statistic[FOREIGN_COUNT_KEY]}\nКоличество клиентов в работе: {statistic[WORKING_COUNT_KEY]}"
+
+    return list_statistic
 
 
 

@@ -220,7 +220,8 @@ def processing_filtering_client() -> None:
 
             else:
 
-                show_founded_year(list_client)
+                list_founded = parsing_to_founded(PATH_CLIENT)
+                show_founded_year(list_founded)
                 show_input_message("Введите год относительно которого нужно провести фильтрацию >> ")
                 value = input()
 
@@ -308,10 +309,17 @@ def processing_sort_client() -> None:
 
             sorted_clients = sort_client_alphabet(PATH_CLIENT, type_sort)
 
-            show_info_message("Отсортированный список клиентов:")
+            if sorted_clients is None:
+                show_error_message("Нет клиентов для сортировки!!! Добавьте первого клиента.")
 
-            sorted_clients = parsing_json(sorted_clients)
-            show_list_client(sorted_clients)
+            else:
+                show_info_message("Отсортированный список клиентов:")
+
+                sorted_clients = parsing_json(sorted_clients)
+                show_list_client(sorted_clients)
+
+        else:
+            show_error_message("Введён некорректный тип сортировки!!! Попробуйте ещё раз.")
 
 
     else:
@@ -329,7 +337,9 @@ def processing_statistic_client() -> None:
 
     else:
         show_info_message("Статистика по базе клиентов: ")
-        show_statistic(statistic)
+
+        list_statistic = parsing_to_statistic(statistic)
+        show_statistic(list_statistic)
 
     return None
 

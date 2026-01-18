@@ -8,6 +8,7 @@ SEARCH_COMMAND = "search"
 FILTER_COMMAND = "filter"
 SORT_COMMAND = "sort"
 STAT_COMMAND = "stat"
+EXPORT_COMMAND = "export"
 EXIT_COMMAND = "exit"
 
 MENU_STYLE = "\x1b[0;37m"

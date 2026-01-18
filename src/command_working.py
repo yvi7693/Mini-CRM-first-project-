@@ -1,3 +1,5 @@
+import os.path
+
 from src.display import *
 from src.basic_logic import *
 
@@ -342,4 +344,18 @@ def processing_statistic_client() -> None:
         show_statistic(list_statistic)
 
     return None
+
+
+def processing_export_file() -> None:
+
+    show_input_message("Введите название папки в которую вы хотите сохранить файл >> ")
+    save_path = input()
+
+    if validate_path(save_path):
+        export_file(save_path, PATH_CLIENT)
+
+        show_info_message(f"Файл успешно экспортирован в {save_path}")
+
+    else:
+        show_error_message("Введена не корректная папка!!! Попробуйте ещё раз.")
 

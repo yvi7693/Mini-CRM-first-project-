@@ -39,6 +39,9 @@ def main_loop():
         elif command == STAT_COMMAND:
             processing_statistic_client()
 
+        elif command == EXPORT_COMMAND:
+            processing_export_file()
+
         elif command == EXIT_COMMAND:
             stop()
             is_working = False

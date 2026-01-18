@@ -1,3 +1,6 @@
+import os.path
+import shutil
+
 from src.auxiliary_logic import *
 from src.constant import *
 from datetime import date
@@ -257,3 +260,11 @@ def validate_data(start_data: str, stop_data: str) -> bool:
         return False
 
     return True
+
+def export_file(save_path: str, file_path: str) -> None:
+
+    full_save_path = os.path.join(os.path.expanduser("~"), save_path, file_path)
+
+    shutil.copy(file_path, full_save_path)
+
+    return None

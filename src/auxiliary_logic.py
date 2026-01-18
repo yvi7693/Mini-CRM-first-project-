@@ -89,6 +89,15 @@ def read_json_file(path: str) -> list[dict] | None:
             return array_dictionary
 
 
+def validate_path(path: str) -> bool:
+    full_path = os.path.expanduser("~") + "/" + path
+    if os.path.exists(full_path):
+        return True
+
+    return False
+
+
+
 def edit_file(path: str, array_dictionary: list[dict]):
 
     with open(path, 'w', encoding="UTF-8") as file:
@@ -216,6 +225,7 @@ def parsing_to_statistic(statistic: dict):
     list_statistic = f"Количество клиентов за последнюю неделю: {statistic[LAST_WEEK_COUNT_KEY]}\nКоличество отечественных клиентов: {statistic[DOMESTIC_COUNT_KEY]}\nКоличество зарубежных клиентов: {statistic[FOREIGN_COUNT_KEY]}\nКоличество клиентов в работе: {statistic[WORKING_COUNT_KEY]}"
 
     return list_statistic
+
 
 
 
